@@ -1,8 +1,8 @@
-class User {
+export class User {
   #name;
   #password;
 
-  constructor(name, email, password, role) {
+  constructor({ name, email, password, role }) {
     this.name = name;
     this.email = email;
     this.password = password;
@@ -37,4 +37,14 @@ class User {
 
     this.#password = value;
   }
+
+  //* function to return a js object
+  toJSON() {
+    return {
+      name: this.#name,
+      email: this.email,
+      password: this.#password,
+      role: this.role
+    }
+  };
 }

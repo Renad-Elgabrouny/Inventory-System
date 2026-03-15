@@ -1,0 +1,18 @@
+{
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "Logitech Supplier",
+      "phone": "01012345678",
+      "email": "supplier@logitech.com",
+      "address": "Cairo"
+    },
+    {
+      "id": 2,
+      "name": "Samsung Supplier",
+      "phone": "01098765432",
+      "email": "supplier@samsung.com",
+      "address": "Alexandria"
+    }
+  ]
+}

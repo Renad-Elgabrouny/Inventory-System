@@ -1,0 +1,34 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Mouse",
+      "sku": "MOU123",
+      "price": 10,
+      "quantity": 50,
+      "reorderLevel": 10,
+      "categoryId": 1,
+      "supplierId": 1
+    },
+    {
+      "id": 2,
+      "name": "Keyboard",
+      "sku": "KEY456",
+      "price": 25,
+      "quantity": 30,
+      "reorderLevel": 8,
+      "categoryId": 1,
+      "supplierId": 1
+    },
+    {
+      "id": 3,
+      "name": "Monitor",
+      "sku": "MON789",
+      "price": 150,
+      "quantity": 5,
+      "reorderLevel": 6,
+      "categoryId": 2,
+      "supplierId": 2
+    }
+  ]
+}

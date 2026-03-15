@@ -1,0 +1,14 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Computer Accessories",
+      "description": "Mice, keyboards, and peripherals"
+    },
+    {
+      "id": 2,
+      "name": "Displays",
+      "description": "Monitors and screens"
+    }
+  ]
+}

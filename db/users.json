@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@inventory.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Staff User",
+      "email": "staff@inventory.com",
+      "password": "staff123",
+      "role": "user"
+    }
+  ]
+}

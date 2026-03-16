@@ -1,0 +1,44 @@
+import { InvalidCredentialError } from "../utils/Error handlers/InvalidCredentialError.js";
+const baseUrl = "http://localhost:3000/users";
+
+import { UserService } from "./userService.js";
+
+async function register(userData) {
+
+  const newUser = await UserService.createUser(userData);
+  localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+  return newUser;
+}
+
+async function login(email, password) {
+  const response = await fetch(`${baseUrl}/${email}`);
+  const user = await response.json();
+  if (!user) {
+    throw new InvalidCredentialError("Invalid email or password");
+  }
+  if (user.password != password) {
+    throw new InvalidCredentialError("Invalid email or password");
+  }
+  localStorage.setItem("currentUser", JSON.stringify(user));
+  return user;
+}
+
+function logout() {
+  localStorage.removeItem("currentUser");
+}
+
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem("currentUser"));
+}
+
+function isAuth() {
+  return localStorage.getItem("currentUser") !== null;
+}
+
+function isAdmin() {
+
+  const user = getCurrentUser();
+
+  return user && user.role === "admin";
+}

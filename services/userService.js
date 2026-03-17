@@ -12,7 +12,7 @@ async function createUser(userData) {
     const existing = await checkExist.json();
 
     if (existing.length > 0) {
-      throw new ResourceAlreadyExistError("User already exists with this email");
+      throw new ResourceAlreadyExistError("email", user.email);
     }
 
     const response = await fetch(baseUrl, {
@@ -34,7 +34,7 @@ async function createUser(userData) {
   }
 }
 
-async function gettAllUsers() {
+async function getAllUsers() {
   try {
     const response = await fetch(baseUrl);
     if (!response.ok) {
@@ -71,7 +71,7 @@ async function updateUser(id, userData) {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(updateUser.toJSON())
+      body: JSON.stringify(updatedData)
     });
     if (response.status === 404) {
       throw new NotFoundError("User not found");
@@ -105,7 +105,7 @@ async function deleteUser(id) {
 
 export const UserService = {
   createUser,
-  gettAllUsers,
+  getAllUsers,
   getUserById,
   updateUser,
   deleteUser

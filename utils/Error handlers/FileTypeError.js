@@ -8,5 +8,3 @@ export class FileTypeError extends BaseError {
     this.errors = [error];
   }
 }
-
-// module.exports = FileTypeErro;

@@ -5,16 +5,26 @@ import { UserService } from "./userService.js";
 
 async function register(userData) {
 
-  const newUser = await UserService.createUser(userData);
-  localStorage.setItem("currentUser", JSON.stringify(newUser));
+  try {
 
-  return newUser;
+    const newUser = await UserService.createUser(userData);
+
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
+
+    return newUser;
+
+  } catch (error) {
+
+    throw error;
+
+  }
+
 }
 
 async function login(email, password) {
-  const response = await fetch(`${baseUrl}/${email}`);
+  const response = await fetch(`${baseUrl}?email=${email}`);
   const user = await response.json();
-  if (!user) {
+  if (users.length === 0) {
     throw new InvalidCredentialError("Invalid email or password");
   }
   if (user.password != password) {
@@ -29,7 +39,8 @@ function logout() {
 }
 
 function getCurrentUser() {
-  return JSON.parse(localStorage.getItem("currentUser"));
+  const user = localStorage.getItem("currentUser");
+  return user ? JSON.parse(user) : null;
 }
 
 function isAuth() {
@@ -42,3 +53,12 @@ function isAdmin() {
 
   return user && user.role === "admin";
 }
+
+export const AuthService = {
+  register,
+  login,
+  logout,
+  getCurrentUser,
+  isAuth,
+  isAdmin
+};

@@ -1,0 +1,356 @@
+{
+  "suppliers": [
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "4d9f"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "98f0"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "e306"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "eb2f"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "ae8f"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "6931"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "867c"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "d2a5"
+    },
+    {
+      "id": "82b7",
+      "ssc": "1111111",
+      "name": "MOHAMED ATIA",
+      "phone": "muhamedatia22@gmail.com",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "7d0c",
+      "ssc": "1111111",
+      "name": "MOHAMED ATIA",
+      "phone": "muhamedatia22@gmail.com",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "1111111",
+      "name": "MOHAMED ATIA",
+      "phone": "muhamedatia22@gmail.com",
+      "email": "muhamedatia@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      },
+      "id": "01c1"
+    },
+    {
+      "ssc": "1111111",
+      "name": "noha",
+      "phone": "noha@gmail.com",
+      "email": "noha@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      },
+      "id": "7b2d"
+    },
+    {
+      "ssc": "1111111",
+      "name": "ahlam",
+      "phone": "ahlam@gmail.com",
+      "email": "ahlam@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      },
+      "id": "3d63"
+    },
+    {
+      "id": "4ea4",
+      "ssc": "1111111",
+      "name": "ahlam",
+      "phone": "ahlam@gmail.com",
+      "email": "ahlam@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "2222",
+      "name": "test2",
+      "phone": "test2@gmail.com",
+      "email": "test2@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "cairo",
+        "city": "Cairo",
+        "street": "One"
+      },
+      "id": "684e"
+    },
+    {
+      "id": "34d4",
+      "ssc": "2222",
+      "name": "test2",
+      "phone": "test2@gmail.com",
+      "email": "test2@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "cairo",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "3333333",
+      "name": "ali2",
+      "phone": "ali2@gmail.com",
+      "email": "ali2@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      },
+      "id": "359a"
+    },
+    {
+      "id": "2425",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "b3df",
+      "ssc": "4444444444",
+      "name": "mohamed",
+      "phone": "444444444444",
+      "email": "flaoks",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "c211",
+      "ssc": "4444444444",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "e8fa",
+      "ssc": "4444444444",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "5845",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "662d",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "2c65",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "muhamedatia22@gmail.com",
+      "email": "muhamedatia",
+      "address": {
+        "continent": "Africa",
+        "country": "cairo",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "85b9",
+      "ssc": "1111111",
+      "name": "without e",
+      "phone": "01062765839",
+      "email": "nnnnnnnnnnn",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "9e93",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "7882",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

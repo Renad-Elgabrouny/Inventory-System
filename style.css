@@ -1,0 +1,107 @@
+.container{
+    padding: 20px 40px;
+}
+.one{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.sup{
+    /* font-size: 60px; */
+    font-weight: bold;
+}
+.right{
+    display: flex;
+    gap: 15px;
+}
+#supplier{
+    padding: 13px 26px;
+    border-radius: 16px;
+    border: 1px solid rgb(24, 134, 231);
+}
+#addbutt{
+    border-radius: 16px;
+    border: none;
+    background-color: rgb(24, 134, 231);
+    padding: 10px 20px;
+    color: white;
+}
+.two{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: rgb(194, 215, 232);
+}
+/* .names{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 80px;
+} */
+/* .first{
+    padding: 10px 20px;
+    margin: 20px 0px;
+    border-radius: 20px;
+    border: 1px solid black;
+} */
+table{
+    /* background-color: white; */
+    border-radius: 20px;
+    border: 1px solid black;
+    padding: 0px 15px;
+}
+/* thead{
+    background-color: rgb(194, 215, 232);
+} */
+thead{
+    background-color: rgb(231, 230, 230);
+}
+th,td{
+    padding: 8px 16px;
+    border: 1px solid white;
+}
+td{
+    font-size: 15px;
+}
+.popup{
+    background-color: white;
+}
+.addSupplier{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+    position: absolute;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    margin-top: 35;
+    
+}
+.content form{
+    background-color: rgb(146, 190, 228);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.content form input{
+    padding: 10px;
+    border-radius: 10px;
+    outline: 1px solid green;
+    border: 1px solid white;
+}
+input:focus {
+    border: 2px solid green;
+    outline: none; 
+}
+.submit,.modify,.reset{
+    background-color: rgb(24, 134, 231);
+    color: white;
+}

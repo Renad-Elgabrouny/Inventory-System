@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .bg-gradient-purple,
+      .create-account-btn {
+        background: linear-gradient(135deg, #7c3aed, #9333ea);
+      }
+
+      .feature-box {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .small-text {
+        font-size: 14px;
+        color: #e5e7eb;
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar bg-white shadow-sm px-4">
+      <div class="container-fluid d-flex justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+          <img src="./assets/Images/navbaricon.png" width="35" />
+          <span class="fw-bold">Inventory System</span>
+        </div>
+        <span class="text-muted small">Inventory Management Solutions</span>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <div
+      class="container vh-80 mt-5 d-flex align-items-center justify-content-center"
+    >
+      <div class="card shadow-lg rounded-4 overflow-hidden w-100">
+        <div class="row g-0">
+          <div class="col-lg-6 p-4 p-md-5 bg-white">
+            <h3 class="fw-bold">Create Account</h3>
+            <p class="text-muted mb-4">
+              Join The UnityWare ecosystem and streamline your inventory today.
+            </p>
+
+            <!-- Name -->
+            <div class="mb-3">
+              <label class="form-label badge text-dark">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label badge text-dark">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Enter your email"
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label class="form-label badge text-dark">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Enter your password"
+              />
+            </div>
+
+            <button class="btn w-100 text-white mt-4 create-account-btn">
+              Create Account →
+            </button>
+
+            <p class="text-center mt-3 small">
+              Already have an account?
+              <a href="#" class="text-decoration-none">Sign In</a>
+            </p>
+          </div>
+
+          <!-- RIGHT -->
+          <div
+            class="col-lg-6 d-none d-lg-flex flex-column justify-content-center bg-gradient-purple text-white p-5"
+          >
+            <img
+              src="./assets/Images/overlay_register.png"
+              width="50"
+              class="mb-3"
+            />
+
+            <h4 class="fw-bold">Unified Control</h4>
+            <p class="small-text">
+              Manage warehouses, track assets, and optimize your supply chain
+              with our all-in-one intuitive dashboard.
+            </p>
+
+            <!-- Feature 1 -->
+            <div
+              class="feature-box rounded-3 p-3 mt-3 d-flex align-items-center gap-3"
+            >
+              <img src="./assets/Images/analytics.png" width="30" />
+              <div>
+                <strong>Real-time Analytics</strong>
+                <div class="small-text">Track every movement instantly</div>
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div
+              class="feature-box rounded-3 p-3 mt-3 d-flex align-items-center gap-3"
+            >
+              <img src="./assets/Images/sync.png" width="30" />
+              <div>
+                <strong>Seamless Sync</strong>
+                <div class="small-text">Multi-device cloud integration</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

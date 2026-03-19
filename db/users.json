@@ -4,8 +4,8 @@
       "id": "1",
       "name": "Admin User",
       "email": "admin@inventory.com",
-      "password": "admin123",
-      "role": "admin"
+      "password": "staff123",
+      "role": "user"
     },
     {
       "id": "2",
@@ -13,6 +13,20 @@
       "email": "staff@inventory.com",
       "password": "staff123",
       "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "Renad Khaled",
+      "email": "renad@admin.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "4",
+      "name": "Roaa Fouda",
+      "email": "roaa@admin.com",
+      "password": "admin123",
+      "role": "admin"
     }
   ]
 }

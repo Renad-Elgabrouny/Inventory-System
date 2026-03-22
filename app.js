@@ -84,55 +84,60 @@ window.addEventListener("load",function(e){
         $(".modify").hide();
     })
     
-    
-    
-        $(".submit").click(function(e){
-            //e.preventDefault();
-            if(!ssc.value||!name.value||!phone.value||!email.value||!continent.value||!country.value||!city.value||!street.value){
-                alert("please enter all the fields")
-            }
-            else if(email.value||name.value||phone.value){
-                if (!email.checkValidity()) {
-                    console.log("Invalid email");
-                    alert("the email you entered is not valid");
-                    return;
-                }else {
-                    email.setCustomValidity("");
+    $(".submit").click(function (e) {
+        if (!ssc.value || !name.value || !phone.value || !email.value ||
+            !continent.value || !country.value || !city.value || !street.value) {
+            alert("please enter all the fields");
+            return;
+        }
+
+        email.setCustomValidity("");
+        name.setCustomValidity("");
+        phone.setCustomValidity("");
+
+        let isValid = true;
+
+        if (!email.checkValidity()) {
+            email.setCustomValidity("The Email you entered is Invalid email");
+            isValid = false;
+        }
+
+        if (name.value.length < 5) {
+            name.setCustomValidity("The name Must be at least 5 characters");
+            isValid = false;
+        }
+
+        if (phone.value.length !== 11) {
+            phone.setCustomValidity("The phone Number Must be 11 digits");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            email.reportValidity();
+            name.reportValidity();
+            phone.reportValidity();
+            return;
+        }
+
+        fetch("http://localhost:3000/suppliers", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ssc: ssc.value,
+                name: name.value,
+                phone: phone.value,
+                email: email.value,
+                address: {
+                    continent: continent.value,
+                    country: country.value,
+                    city: city.value,
+                    street: street.value
                 }
-                if(name.value.length < 5){
-                    name.setCustomValidity("Must be at least 5 characters");
-                    alert("the name must be atleast 5 chars");
-                }else {
-                    name.setCustomValidity(""); 
-                }
-                if(phone.value.length != 11){
-                    phone.setCustomValidity("Must be 11 characters");
-                    alert("the phone must be 11 chars");
-                }else {
-                    name.setCustomValidity(""); 
-                }
-            }
-            else{
-                fetch("http://localhost:3000/suppliers", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    ssc:ssc.value,
-                    name:name.value,
-                    phone:phone.value,
-                    email:email.value,
-                    address: {
-                        continent: continent.value,
-                        country: country.value,
-                        city: city.value,
-                        street: street.value
-                    }
-                })
-                })
-                .then(res => res.json())
-                .then(console.log);
-            }
+            })
         })
+        .then(res => res.json())
+        .then(console.log);
+    });
     
 
     $(document).on("click", "#deleteBtn", function(){
@@ -144,6 +149,7 @@ window.addEventListener("load",function(e){
                 console.log("RES", res);
         });
     });
+
     $(document).on("click", "#updateBtn", function(){
         $(".submit").hide();
         console.log($(this).attr("class"));
@@ -185,6 +191,7 @@ window.addEventListener("load",function(e){
             })
         })
     });
+
     const supplier = document.querySelector("#supplier");
     supplier.addEventListener("input",function(e){
         console.log(e.target.value);

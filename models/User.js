@@ -1,8 +1,9 @@
+import { ValidationError } from "../utils/Error handlers/ValidationError.js";
 export class User {
   #name;
   #password;
-
-  constructor({ name, email, password, role }) {
+  #email;
+  constructor({ name, email, password, role = "user" }) {
     this.name = name;
     this.email = email;
     this.password = password;
@@ -11,31 +12,56 @@ export class User {
 
   get name() { return this.#name; }
   get password() { return this.#password; }
-
+  get email() { return this.#email; }
   set name(value) {
     // check if name contain any special chars or digit
-    const regex = /[\d\W_]/;
-    if (regex.test(value)) {
-      throw new Error("Name must contain alphabet letters only");
+    const regex = /^[A-Za-z\s]+$/;
+    if (!value || !value.trim()) {
+      throw new ValidationError([{ msg: "Name is required", param: "name" }])
+    }
+    if (!regex.test(value)) {
+      throw new ValidationError([
+        { msg: "Name must contain letters only", param: "name" }
+      ]);
     }
     if (value.length < 3) {
-      throw new Error("Name must be at least 3 characters");
+      throw new ValidationError([{ msg: "Name must be at least 3 characters", param: "name" }]);
     }
-    this.#name = value;
+    this.#name = value.trim();
   }
+  set email(value) {
+    if (!value || !value.trim()) {
+      throw new ValidationError([
+        { msg: "Email is required", param: "email" }
+      ]);
+    }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(value)) {
+      throw new ValidationError([
+        { msg: "Please enter a valid email", param: "email" }
+      ]);
+    }
+
+    this.#email = value.trim();
+  }
   set password(value) {
     // validate password 
+    if (!value || !value.trim()) {
+      throw new ValidationError([{ msg: "Password is required", param: "password" }])
+    }
     const hasNumber = /\d/.test(value);
     const hasCapital = /[A-Z]/.test(value);
 
     if (value.length < 6 || !hasNumber || !hasCapital) {
-      throw new Error(
-        "Password must be at least 6 characters, include a capital letter, and a number"
+      throw new ValidationError([{
+        msg: "Password must be at least 6 characters, include a capital letter, and a number", param: "password"
+      }]
       );
     }
 
-    this.#password = value;
+    this.#password = value.trim();
   }
 
   //* function to return a js object

@@ -27,6 +27,20 @@
       "email": "roaa@admin.com",
       "password": "admin123",
       "role": "admin"
+    },
+    {
+      "id": "89cf",
+      "name": "renad",
+      "email": "renad@gmail.com",
+      "password": "12345R24",
+      "role": "user"
+    },
+    {
+      "id": "e7ea",
+      "name": "masa",
+      "email": "masa@gmail.com",
+      "password": "1029384576M",
+      "role": "user"
     }
   ]
 }

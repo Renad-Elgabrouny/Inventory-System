@@ -23,14 +23,18 @@ async function register(userData) {
 
 async function login(email, password) {
   const response = await fetch(`${baseUrl}?email=${email}`);
-  const user = await response.json();
+  const users = await response.json();
+
   if (users.length === 0) {
     throw new InvalidCredentialError("Invalid email or password");
   }
-  if (user.password != password) {
+  const user = users[0];
+  if (user.password !== password) {
     throw new InvalidCredentialError("Invalid email or password");
   }
+
   localStorage.setItem("currentUser", JSON.stringify(user));
+
   return user;
 }
 

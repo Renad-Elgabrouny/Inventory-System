@@ -2,6 +2,7 @@ import { User } from "../models/User.js";
 import { InternalError } from "../utils/Error handlers/InternalError.js";
 import { NotFoundError } from "../utils/Error handlers/NotFoundError.js";
 import { ResourceAlreadyExistError } from "../utils/Error handlers/ResourceAlreadyExistError.js";
+import { ValidationError } from "../utils/Error handlers/ValidationError.js";
 
 const baseUrl = "http://localhost:3000/users";
 
@@ -31,11 +32,12 @@ async function createUser(userData) {
     return await response.json();
 
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (
       error instanceof NotFoundError ||
-      error instanceof ResourceAlreadyExistError
+      error instanceof ResourceAlreadyExistError ||
+      error instanceof ValidationError
     ) {
       throw error;
     }
@@ -55,11 +57,12 @@ async function getAllUsers() {
     return await response.json();
 
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (
       error instanceof NotFoundError ||
-      error instanceof ResourceAlreadyExistError
+      error instanceof ResourceAlreadyExistError ||
+      error instanceof ValidationError
     ) {
       throw error;
     }
@@ -83,11 +86,12 @@ async function getUserById(id) {
     return await response.json();
 
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (
       error instanceof NotFoundError ||
-      error instanceof ResourceAlreadyExistError
+      error instanceof ResourceAlreadyExistError ||
+      error instanceof ValidationError
     ) {
       throw error;
     }
@@ -121,11 +125,12 @@ async function updateUser(id, userData) {
     return await response.json();
 
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (
       error instanceof NotFoundError ||
-      error instanceof ResourceAlreadyExistError
+      error instanceof ResourceAlreadyExistError ||
+      error instanceof ValidationError
     ) {
       throw error;
     }
@@ -151,11 +156,12 @@ async function deleteUser(id) {
     return { success: true };
 
   } catch (error) {
-    console.error(error);
+    console.log(error);
 
     if (
       error instanceof NotFoundError ||
-      error instanceof ResourceAlreadyExistError
+      error instanceof ResourceAlreadyExistError ||
+      error instanceof ValidationError
     ) {
       throw error;
     }

@@ -55,39 +55,47 @@
             <div class="mb-3">
               <label class="form-label badge text-dark">Full Name</label>
               <input
+                required
                 type="text"
-                class="form-control"
+                class="form-control user-name-register"
                 placeholder="Enter your name"
               />
+              <div class="text-danger small name-error"></div>
             </div>
 
             <!-- Email -->
             <div class="mb-3">
               <label class="form-label badge text-dark">Email</label>
               <input
+                required
                 type="email"
-                class="form-control"
+                class="form-control user-email-register"
                 placeholder="Enter your email"
               />
+              <div class="text-danger small email-error"></div>
             </div>
 
             <!-- Password -->
             <div class="mb-3">
-              <label class="form-label badge text-dark">Password</label>
+              <label class="form-label badge password-dark">Password</label>
               <input
+                required
                 type="password"
-                class="form-control"
+                class="form-control user-pass-register"
                 placeholder="Enter your password"
               />
+              <div class="text-danger small password-error"></div>
             </div>
 
-            <button class="btn w-100 text-white mt-4 create-account-btn">
+            <button
+              class="btn w-100 text-white mt-4 create-account-btn register"
+            >
               Create Account →
             </button>
 
             <p class="text-center mt-3 small">
               Already have an account?
-              <a href="#" class="text-decoration-none">Sign In</a>
+              <a href="#" class="text-decoration-none login">Sign In</a>
             </p>
           </div>
 
@@ -132,5 +140,6 @@
         </div>
       </div>
     </div>
+    <script src="./js/pages/users.js" type="module"></script>
   </body>
 </html>

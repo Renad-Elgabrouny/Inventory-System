@@ -41,6 +41,13 @@
       "email": "masa@gmail.com",
       "password": "1029384576M",
       "role": "user"
+    },
+    {
+      "id": "c93f",
+      "name": "renaddd",
+      "email": "enad@test.com",
+      "password": "1234567R",
+      "role": "user"
     }
   ]
 }

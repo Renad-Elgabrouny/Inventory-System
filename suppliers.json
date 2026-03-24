@@ -11,58 +11,6 @@
         "city": "cairo",
         "street": "street one"
       },
-      "id": "98f0"
-    },
-    {
-      "ssc": "102030",
-      "name": "mohamed ahmed",
-      "phone": "0111111111",
-      "email": "mohamed@gmail.com",
-      "address": {
-        "continent": "africa",
-        "country": "egypt",
-        "city": "cairo",
-        "street": "street one"
-      },
-      "id": "e306"
-    },
-    {
-      "ssc": "102030",
-      "name": "mohamed ahmed",
-      "phone": "0111111111",
-      "email": "mohamed@gmail.com",
-      "address": {
-        "continent": "africa",
-        "country": "egypt",
-        "city": "cairo",
-        "street": "street one"
-      },
-      "id": "eb2f"
-    },
-    {
-      "ssc": "102030",
-      "name": "mohamed ahmed",
-      "phone": "0111111111",
-      "email": "mohamed@gmail.com",
-      "address": {
-        "continent": "africa",
-        "country": "egypt",
-        "city": "cairo",
-        "street": "street one"
-      },
-      "id": "ae8f"
-    },
-    {
-      "ssc": "102030",
-      "name": "mohamed ahmed",
-      "phone": "0111111111",
-      "email": "mohamed@gmail.com",
-      "address": {
-        "continent": "africa",
-        "country": "egypt",
-        "city": "cairo",
-        "street": "street one"
-      },
       "id": "6931"
     },
     {
@@ -110,19 +58,6 @@
       "name": "MOHAMED ATIA",
       "phone": "01062765839",
       "email": "muhamedatia22gmail.com",
-      "address": {
-        "continent": "Africa",
-        "country": "Egypt",
-        "city": "Cairo",
-        "street": "One"
-      }
-    },
-    {
-      "id": "e8fa",
-      "ssc": "4444444444",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22",
       "address": {
         "continent": "Africa",
         "country": "Egypt",
@@ -220,6 +155,19 @@
         "city": "samanoud",
         "street": "One"
       }
+    },
+    {
+      "ssc": "88888888",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      },
+      "id": "c688"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

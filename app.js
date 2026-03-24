@@ -70,12 +70,118 @@ window.addEventListener("load",function(e){
             table.appendChild(body);
         }
     }
-    fetch("http://localhost:3000/suppliers")
-        .then(res => res.json())
-        .then(data => {
+
+    let updatedSupplier=0;
+    async function getSupplier(id) {
+        try {
+            const response = await fetch("http://localhost:3000/suppliers/"+id);
+            if (!response.ok) {
+                throw new Error("Failed to fetch suppliers");
+            }
+            const data = await response.json();
+            ssc.value = data.ssc;
+            name.value = data.name;
+            phone.value = data.phone;
+            email.value = data.email;
+            continent.value = data.address.continent;
+            country.value = data.address.country;
+            city.value = data.address.city;
+            street.value = data.address.street;
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
+    }
+    async function getSuppliers() {
+        try {
+            const response = await fetch("http://localhost:3000/suppliers");
+            if (!response.ok) {
+                throw new Error("Failed to fetch suppliers");
+            }
+            const data = await response.json();
             showData(data);
             searcharr.push(...data);
-    })
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
+    }
+    getSuppliers();
+
+    async function addSupplier() {
+        try {
+            const response = await fetch("http://localhost:3000/suppliers", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ssc: ssc.value,
+                    name: name.value,
+                    phone: phone.value,
+                    email: email.value,
+                    address: {
+                        continent: continent.value,
+                        country: country.value,
+                        city: city.value,
+                        street: street.value
+                    }
+                })
+            });
+            if (!response.ok) {
+                throw new Error("Failed to add supplier");
+            }
+            const data = await response.json();
+            console.log("Added supplier:", data);
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
+    }
+
+    async function deleteSupplier(id) {
+        try {
+            const response = await fetch(`http://localhost:3000/suppliers/${id}`, {
+                method: 'DELETE'
+            });
+            if (!response.ok) {
+                throw new Error("Failed to delete supplier");
+            }
+            let data = null;
+                try {
+                    data = await response.json();
+                } catch {
+                    data = { message: "Deleted successfully (no response body)" };
+                }
+            console.log("RES", data);
+        } catch (error) {
+            console.error("Error deleting supplier:", error.message);
+        }
+    }
+
+    async function updateSupplier(id) {
+        try {
+            const response = await fetch(`http://localhost:3000/suppliers/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ssc: ssc.value,
+                    name: name.value,
+                    phone: phone.value,
+                    email: email.value,
+                    address: {
+                        continent: continent.value,
+                        country: country.value,
+                        city: city.value,
+                        street: street.value
+                    }
+                })
+            });
+            if (!response.ok) {
+                throw new Error("Failed to update supplier");
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Error updating supplier:", error.message);
+            return null;
+        }
+    }
 
     const ssc = document.querySelector("#ssc");
     const name = document.querySelector("#name");
@@ -92,6 +198,7 @@ window.addEventListener("load",function(e){
         $(".modify").hide();
     })
     
+
     $(".submit").click(function (e) {
         if (!ssc.value || !name.value || !phone.value || !email.value ||
             !continent.value || !country.value || !city.value || !street.value) {
@@ -127,35 +234,23 @@ window.addEventListener("load",function(e){
             return;
         }
 
-        fetch("http://localhost:3000/suppliers", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                ssc: ssc.value,
-                name: name.value,
-                phone: phone.value,
-                email: email.value,
-                address: {
-                    continent: continent.value,
-                    country: country.value,
-                    city: city.value,
-                    street: street.value
-                }
-            })
-        })
-        .then(res => res.json())
-        .then(console.log);
+        addSupplier()
     });
     
-
+    let supplierToDelete = null;
+    function openDeleteModal(id) {
+        supplierToDelete = id;
+        const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        modal.show();
+    }
+    document.getElementById("confirmDelete").addEventListener("click", function () {
+        deleteSupplier(supplierToDelete)
+        renderSuppliers();
+    });
     $(document).on("click", "#deleteBtn", function(){
         console.log($(this).attr("class"));
         const id = $(this).attr("class");
-        fetch("http://localhost:3000/suppliers/"+id, {
-            method: 'DELETE'
-            }).then(res => res.json()).then(res => {
-                console.log("RES", res);
-        });
+        openDeleteModal(id);
     });
 
     $(document).on("click", "#updateBtn", function(){
@@ -164,39 +259,10 @@ window.addEventListener("load",function(e){
         const id = $(this).attr("class");
         $(".addSupplier").show();
         $(".container").hide();
-        fetch("http://localhost:3000/suppliers/"+id)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                ssc.value = data.ssc;
-                name.value = data.name;
-                phone.value = data.phone;
-                email.value = data.email;
-                continent.value = data.address.continent;
-                country.value = data.address.country;
-                city.value = data.address.city;
-                street.value = data.address.street;
-                $(".modify").click(function(e){
-                    e.preventDefault();
-                    fetch("http://localhost:3000/suppliers/"+id, {
-                    method: 'PUT',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        ssc:ssc.value,
-                        name:name.value,
-                        phone:phone.value,
-                        email:email.value,
-                        address: {
-                            continent: continent.value,
-                            country: country.value,
-                            city: city.value,
-                            street: street.value
-                        }
-                    })
-                })
-                .then(res => res.json())
-                .then(console.log);
-            })
+        getSupplier(id)
+        $(".modify").click(function(e){
+            e.preventDefault();
+            updateSupplier(id)
         })
     });
 
@@ -207,10 +273,10 @@ window.addEventListener("load",function(e){
         body.innerHTML = "";
         showData(result);
     })
-    supplier.addEventListener("input",function(e){
-        console.log(e.target.value);
-        const result = searcharr.filter(sup => sup.continent.includes(e.target.value));
-        body.innerHTML = "";
-        showData(result);
-    })
+    // supplier.addEventListener("input",function(e){
+    //     console.log(e.target.value);
+    //     const result1 = searcharr.filter(sup => sup.continent.includes(e.target.value));
+    //     body.innerHTML = "";
+    //     showData(result1);
+    // })
 })

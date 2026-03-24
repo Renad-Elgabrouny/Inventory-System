@@ -1,0 +1,12 @@
+{
+  "activityLogs": [
+    {
+      "id": 1,
+      "action": "Product Created",
+      "entity": "product",
+      "entityId": 1,
+      "userId": 1,
+      "date": "2026-03-15"
+    }
+  ]
+}

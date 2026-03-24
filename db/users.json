@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": "1",
       "name": "Admin User",
-      "email": "admin@inventory.com",
-      "password": "staff123",
-      "role": "user"
+      "email": "admin@admin.com",
+      "password": "Staff123",
+      "role": "admin",
+      "id": "1"
     },
     {
       "id": "2",
@@ -36,17 +36,31 @@
       "role": "user"
     },
     {
-      "id": "e7ea",
       "name": "masa",
       "email": "masa@gmail.com",
       "password": "1029384576M",
-      "role": "user"
+      "role": "admin",
+      "id": "e7ea"
     },
     {
       "id": "c93f",
       "name": "renaddd",
       "email": "enad@test.com",
       "password": "1234567R",
+      "role": "user"
+    },
+    {
+      "id": "a370",
+      "name": "Khaled Ahmed",
+      "email": "khaled@gmail.com",
+      "password": "K12345678",
+      "role": "user"
+    },
+    {
+      "id": "48d2",
+      "name": "Renad Khaled",
+      "email": "renadkhaled@gmail.com",
+      "password": "R12345",
       "role": "user"
     }
   ]

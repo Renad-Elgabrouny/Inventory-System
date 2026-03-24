@@ -9,7 +9,7 @@ async function register(userData) {
 
     const newUser = await UserService.createUser(userData);
 
-    localStorage.setItem("currentUser", JSON.stringify(newUser));
+    // localStorage.setItem("currentUser", JSON.stringify(newUser));
 
     return newUser;
 

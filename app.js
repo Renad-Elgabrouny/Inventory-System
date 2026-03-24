@@ -14,16 +14,24 @@ window.addEventListener("load",function(e){
             let item = data[i];
             const tr = document.createElement("tr");
             const ssn = document.createElement("td");
+            ssn.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const name = document.createElement("td");
+            name.style.cssText=`font-size:18px`;
             const phone = document.createElement("td");
+            phone.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const email = document.createElement("td");
+            email.style.cssText = `color:rgb(37, 99, 235)`;
             const continent = document.createElement("td");
+            continent.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const country = document.createElement("td");
+            country.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const city = document.createElement("td");
+            city.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const street = document.createElement("td");
+            street.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const updatetd = document.createElement("td");
             const update = document.createElement("button");
-            update.style.cssText = `background-color:blue;padding:2px;color:white;border:none;border-radius:5px`;
+            update.style.cssText = `background-color:rgb(37, 99, 235);padding:2px;color:white;border:none;border-radius:5px`;
             update.id = "updateBtn";
             update.classList.add(item.id);
             update.value = "Update";
@@ -196,6 +204,12 @@ window.addEventListener("load",function(e){
     supplier.addEventListener("input",function(e){
         console.log(e.target.value);
         const result = searcharr.filter(sup => sup.name.includes(e.target.value));
+        body.innerHTML = "";
+        showData(result);
+    })
+    supplier.addEventListener("input",function(e){
+        console.log(e.target.value);
+        const result = searcharr.filter(sup => sup.continent.includes(e.target.value));
         body.innerHTML = "";
         showData(result);
     })

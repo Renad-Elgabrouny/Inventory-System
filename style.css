@@ -62,16 +62,23 @@
 #supplier{
     padding: 13px 26px;
     border-radius: 16px;
-    border: 1px solid rgb(24, 134, 231);
+    border: 1px solid rgba(37, 99, 235, 1);
+    background-color: rgba(248, 250, 252, 1);
 }
 #addbutt{
     border-radius: 16px;
     border: none;
-    background-color: rgb(24, 134, 231);
+    background-color: rgba(37, 99, 235, 1);
     padding: 10px 20px;
     color: white;
 }
-thead{
+.container{
+    background-color: rgba(248, 250, 252, 1);
+}
+tr{
+    border: 1px solid rgba(241, 245, 249, 1);
+}
+thead tr{
     background-color: rgb(194, 215, 232);
 }
 .suppdata thead{
@@ -79,10 +86,11 @@ thead{
 }
 .suppdata th,.suppdata td{
     padding: 5px 10px;
-    border: 1px solid rgb(225, 225, 225);
+    /* border: 1px solid rgb(225, 225, 225); */
 }
 .names th{
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    color: rgba(100, 116, 139, 1);
 }
 .suppdata td{
     font-size: 15px;
@@ -120,6 +128,6 @@ input:focus {
     outline: none; 
 }
 .submit,.modify,.reset{
-    background-color: rgb(24, 134, 231);
+    background-color: rgba(37, 99, 235, 1);
     color: white;
 }

@@ -6,7 +6,7 @@ const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
 const profile = document.querySelector(".user-profile");
 const usersItem = document.querySelector(".users");
-
+const supplierItem = document.querySelector(".supplier");
 
 function checkRole() {
   const usr = AuthService.getCurrentUser();
@@ -31,6 +31,7 @@ function checkItems() {
 
     if (!item) return;
     sidebarItems.forEach(el => el.classList.remove("active-item"));
+    supplierItem.classList.remove("active-item");
     item.classList.add("active-item");
 
     if (item.classList.contains("users")) {

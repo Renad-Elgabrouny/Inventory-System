@@ -10,6 +10,10 @@ const search = document.querySelector(".search");
 const sidebarItems = document.querySelectorAll(".sidebar-item span");
 let deleteUsers = null; // will be updated later inside a function after rendering it 
 let editUsers = null;
+let totalUsers = null;
+let totalAdmins = null;
+let addUsers = null;
+let tbody = null;
 const profile = document.querySelector(".user-profile");
 
 
@@ -257,7 +261,6 @@ export async function loadUserWindow() {
     await renderAreaContent();
     reselectElements();
     visitPages();
-    renderUserProfile();
     await initModal();
     allUsers = await UserService.getAllUsers();
     setupCards();

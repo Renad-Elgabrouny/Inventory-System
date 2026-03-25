@@ -93,6 +93,7 @@ async function deleteActivity(id) {
     const response = await fetch(`${baseUrl}/${id}`, {
       method: "DELETE"
     });
+    console.log(response);
     if (response.status === 404) {
       throw new NotFoundError("Activity not found");
     }

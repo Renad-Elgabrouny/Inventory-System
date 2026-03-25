@@ -1,6 +1,6 @@
 import { AuthService } from "../../services/authService.js";
 import { loadUserWindow } from "./users.js";
-
+import { loadLogWindow } from "./activityLog.js";
 // Selectors
 const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -36,6 +36,9 @@ function checkItems() {
 
     if (item.classList.contains("users")) {
       loadUserWindow();
+    }
+    if (item.classList.contains("activities")) {
+      loadLogWindow();
     }
   });
 }

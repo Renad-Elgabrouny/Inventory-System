@@ -7,23 +7,21 @@ const users = document.querySelector(".users");
 const report = document.querySelector(".report");
 const logs = document.querySelector(".activities");
 const search = document.querySelector(".search");
-const totalUsers = document.querySelector(".total-u h5");
-const totalAdmins = document.querySelector(".total-a h5");
 const sidebarItems = document.querySelectorAll(".sidebar-item span");
-let addUsers = document.querySelector(".add-user");
-let deleteUsers = document.querySelectorAll(".edit-user");
-let editUsers = document.querySelectorAll(".delete-user");
+let deleteUsers = null; // will be updated later inside a function after rendering it 
+let editUsers = null;
 const profile = document.querySelector(".user-profile");
-const tbody = document.querySelector("tbody");
+
 
 // global all users so that it can be used across all functions
 let allUsers = [];
 
-function renderUserProfile() {
-  let currentUser = AuthService.getCurrentUser();
-  profile.innerText = currentUser.name;
-
-}
+function reselectElements() {
+  totalUsers = document.querySelector(".total-u h5");
+  totalAdmins = document.querySelector(".total-a h5");
+  addUsers = document.querySelector(".add-user");
+  tbody = document.querySelector("tbody");
+}// make them in a function so that i can reselect then after rendering the contentArea content
 
 function visitPages() {
   dashboard.addEventListener("click", function (e) {
@@ -55,6 +53,12 @@ function visitPages() {
     window.location = "../../pages/activityLog.html";
   });
 }// this function handle going from page to another using the items in the side navbar
+
+async function renderAreaContent() {
+  const res = await fetch("../../pages/users.html");
+  const html = await res.text();
+  document.querySelector(".contentArea").innerHTML = html;
+}// display the outer strucutre of the area content (user page without data)
 
 function renderUsers(allUsers) {
   tbody.innerHTML = "";
@@ -250,6 +254,8 @@ function setupDeleteUser() {
 
 export async function loadUserWindow() {
   try {
+    await renderAreaContent();
+    reselectElements();
     visitPages();
     renderUserProfile();
     await initModal();

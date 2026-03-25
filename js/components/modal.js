@@ -1,37 +1,37 @@
 let modalInstance;
 
 export const initModal = async () => {
-  const res = await fetch('../../components/modal.html');
-  const html = await res.text();
+    const res = await fetch('../../components/modal.html');
+    const html = await res.text();
 
-  document.getElementById('modal-container').innerHTML = html;
+    document.getElementById('modal-container').innerHTML = html;
 
-  const modalElement = document.getElementById('staticBackdrop');
+    const modalElement = document.getElementById('staticBackdrop');
 
-  if (!modalElement) {
-    console.error("Modal not found!");
-    return;
-  }
+    if (!modalElement) {
+        console.error("Modal not found!");
+        return;
+    }
 
-  modalInstance = new bootstrap.Modal(modalElement, {
-    focus: true
-  });
+    modalInstance = new bootstrap.Modal(modalElement, {
+        focus: true
+    });
 
 };// initialize the modal by taking instance from modal class in bootstrap
 
 export const openModal = (title, content) => {
-  document.getElementById('staticBackdropLabel').textContent = title;
+    document.getElementById('staticBackdropLabel').textContent = title;
 
-  const body = document.getElementById('modal-body');
-  body.innerHTML = content;
+    const body = document.getElementById('modal-body');
+    body.innerHTML = content;
 
-  modalInstance.show();
+    modalInstance.show();
 
-  return document.getElementById('staticBackdrop');
+    return document.getElementById('staticBackdrop');
 };// open (show) the modal popup by show() funtion
 
 export const closeModal = () => {
-  modalInstance?.hide();
+    modalInstance?.hide();
 };// close modal by hide() function
 
 
@@ -40,22 +40,22 @@ let currentEditId = null;
 
 $(document).on("click", ".supplier", function () {
     $(this).addClass("active-item");
-    $(".contentArea").load("suppliers.html", function() {
+    $(".contentArea").load("./pages/suppliers.html", function () {
         const table = document.querySelector(".suppdata");
         const body = document.createElement("tbody");
         const searcharr = [];
-        let emailvar=0;
+        let emailvar = 0;
 
         $(".addSupplier").hide();
 
-        function showData(data){
-            for(let i=0;i<data.length;i++){
+        function showData(data) {
+            for (let i = 0; i < data.length; i++) {
                 let item = data[i];
                 const tr = document.createElement("tr");
                 const ssn = document.createElement("td");
                 ssn.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 const name = document.createElement("td");
-                name.style.cssText=`font-size:16px`;
+                name.style.cssText = `font-size:16px`;
                 const phone = document.createElement("td");
                 phone.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 const email = document.createElement("td");
@@ -110,10 +110,10 @@ $(document).on("click", ".supplier", function () {
             }
         }
 
-        let updatedSupplier=0;
+        let updatedSupplier = 0;
         async function getSupplier(id) {
             try {
-                const response = await fetch("http://localhost:3000/suppliers/"+id);
+                const response = await fetch("http://localhost:3000/suppliers/" + id);
                 if (!response.ok) {
                     throw new Error("Failed to fetch suppliers");
                 }
@@ -126,9 +126,9 @@ $(document).on("click", ".supplier", function () {
                 country.value = data.address.country;
                 city.value = data.address.city;
                 street.value = data.address.street;
-                } catch (error) {
-                    console.error("Error:", error.message);
-                }
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
         }
         async function getSuppliers() {
             try {
@@ -139,9 +139,9 @@ $(document).on("click", ".supplier", function () {
                 const data = await response.json();
                 showData(data);
                 searcharr.push(...data);
-                } catch (error) {
-                    console.error("Error:", error.message);
-                }
+            } catch (error) {
+                console.error("Error:", error.message);
+            }
         }
         getSuppliers();
 
@@ -182,11 +182,11 @@ $(document).on("click", ".supplier", function () {
                     throw new Error("Failed to delete supplier");
                 }
                 let data = null;
-                    try {
-                        data = await response.json();
-                    } catch {
-                        data = { message: "Deleted successfully (no response body)" };
-                    }
+                try {
+                    data = await response.json();
+                } catch {
+                    data = { message: "Deleted successfully (no response body)" };
+                }
                 console.log("RES", data);
             } catch (error) {
                 console.error("Error deleting supplier:", error.message);
@@ -231,12 +231,12 @@ $(document).on("click", ".supplier", function () {
         const city = document.querySelector("#city");
         const street = document.querySelector("#street");
 
-        $("#addbutt").click(function(){
+        $("#addbutt").click(function () {
             $(".addSupplier").show();
             $(".container").hide();
             $(".modify").hide();
         })
-        
+
 
         $(".submit").click(function (e) {
             if (!ssc.value || !name.value || !phone.value || !email.value ||
@@ -275,7 +275,7 @@ $(document).on("click", ".supplier", function () {
 
             addSupplier()
         });
-        
+
         let supplierToDelete = null;
         function openDeleteModal(id) {
             supplierToDelete = id;
@@ -286,27 +286,27 @@ $(document).on("click", ".supplier", function () {
             deleteSupplier(supplierToDelete)
             renderSuppliers();
         });
-        $(document).on("click", "#deleteBtn", function(){
+        $(document).on("click", "#deleteBtn", function () {
             console.log($(this).attr("class"));
             const id = $(this).attr("class");
             openDeleteModal(id);
         });
 
-        $(document).on("click", "#updateBtn", function(){
+        $(document).on("click", "#updateBtn", function () {
             $(".submit").hide();
             console.log($(this).attr("class"));
             const id = $(this).attr("class");
             $(".addSupplier").show();
             $(".container").hide();
             getSupplier(id)
-            $(".modify").click(function(e){
+            $(".modify").click(function (e) {
                 e.preventDefault();
                 updateSupplier(id)
             })
         });
 
         const supplier = document.querySelector("#supplier");
-        supplier.addEventListener("input",function(e){
+        supplier.addEventListener("input", function (e) {
             console.log(e.target.value);
             const result = searcharr.filter(sup => sup.name.includes(e.target.value));
             body.innerHTML = "";
@@ -318,6 +318,6 @@ $(document).on("click", ".supplier", function () {
         //     body.innerHTML = "";
         //     showData(result1);
         // })
-        });
+    });
 });
 

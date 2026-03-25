@@ -14,12 +14,7 @@ export function loginInit() {
 
     try {
       const res = await AuthService.login(userName.value, userPassword.value);
-      if (res.role == "admin") {
-        window.location.href = "./pages/users.html";
-      } else {
-        window.location.href = "index.html";
-      }
-
+      window.location.href = "index.html";
     } catch (error) {
       console.log(error);
 

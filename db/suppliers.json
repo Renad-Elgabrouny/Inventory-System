@@ -11,19 +11,6 @@
         "city": "cairo",
         "street": "street one"
       },
-      "id": "6931"
-    },
-    {
-      "ssc": "102030",
-      "name": "mohamed ahmed",
-      "phone": "0111111111",
-      "email": "mohamed@gmail.com",
-      "address": {
-        "continent": "africa",
-        "country": "egypt",
-        "city": "cairo",
-        "street": "street one"
-      },
       "id": "867c"
     },
     {
@@ -142,6 +129,19 @@
         "city": "samanoud",
         "street": "One"
       }
+    },
+    {
+      "ssc": "1010101",
+      "name": "sameh",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "australia",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      },
+      "id": "8e43"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

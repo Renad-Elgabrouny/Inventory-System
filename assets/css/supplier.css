@@ -127,7 +127,27 @@ input:focus {
     border: 2px solid green;
     outline: none; 
 }
-.submit,.modify,.reset{
+.submit,.modify,.cancel{
     background-color: rgba(37, 99, 235, 1);
     color: white;
 }
+@media (max-width: 600px) {
+    .sml {
+        display: none;
+    }
+    .med {
+        display: none;
+    }
+    .content{
+        max-width: 100%;
+    }
+}
+
+/* @media (min-width: 600px) and (max-width: 900px) {
+    .med {
+        display: block;
+    }
+    .content{
+        max-width: 100%;
+    }
+} */

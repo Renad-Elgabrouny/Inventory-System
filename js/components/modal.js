@@ -54,20 +54,30 @@ $(document).on("click", ".supplier", function () {
                 const tr = document.createElement("tr");
                 const ssn = document.createElement("td");
                 ssn.style.cssText = `color: rgba(100, 116, 139, 1);`;
+                ssn.classList.add("d-none");
+                ssn.classList.add("d-lg-table-cell");
                 const name = document.createElement("td");
                 name.style.cssText = `font-size:16px`;
                 const phone = document.createElement("td");
                 phone.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 const email = document.createElement("td");
                 email.style.cssText = `color:rgb(37, 99, 235);`;
+                email.classList.add("d-none");
+                email.classList.add("d-md-table-cell");
                 const continent = document.createElement("td");
                 continent.style.cssText = `color: rgb(37, 99, 235)`;
+                continent.classList.add("d-none");
+                continent.classList.add("d-lg-table-cell");
                 const country = document.createElement("td");
                 country.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 const city = document.createElement("td");
                 city.style.cssText = `color: rgba(100, 116, 139, 1);`;
+                city.classList.add("d-none");
+                city.classList.add("d-lg-table-cell");
                 const street = document.createElement("td");
                 street.style.cssText = `color: rgba(100, 116, 139, 1);`;
+                street.classList.add("d-none");
+                street.classList.add("d-lg-table-cell");
                 const updatetd = document.createElement("td");
                 const update = document.createElement("button");
                 update.style.cssText = `background-color:rgb(37, 99, 235);padding:2px;color:white;border:none;border-radius:5px`;
@@ -237,6 +247,10 @@ $(document).on("click", ".supplier", function () {
             $(".modify").hide();
         })
 
+        $(".cancel").click(function () {
+            $(".addSupplier").hide();
+            $(".container").show();
+        })
 
         $(".submit").click(function (e) {
             if (!ssc.value || !name.value || !phone.value || !email.value ||
@@ -274,6 +288,7 @@ $(document).on("click", ".supplier", function () {
             }
 
             addSupplier()
+            $(".container").show();
         });
 
         let supplierToDelete = null;
@@ -294,6 +309,7 @@ $(document).on("click", ".supplier", function () {
 
         $(document).on("click", "#updateBtn", function () {
             $(".submit").hide();
+            $(".modify").show();
             console.log($(this).attr("class"));
             const id = $(this).attr("class");
             $(".addSupplier").show();

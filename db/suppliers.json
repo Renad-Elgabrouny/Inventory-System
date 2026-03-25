@@ -131,8 +131,9 @@
       }
     },
     {
-      "ssc": "8888888899",
-      "name": "MOHAMED ATIA",
+      "id": "4710",
+      "ssc": "9999999",
+      "name": "nadaa",
       "phone": "01062765839",
       "email": "muhamedatia22@gmail.com",
       "address": {
@@ -140,8 +141,7 @@
         "country": "Egypt",
         "city": "samanoud",
         "street": "One"
-      },
-      "id": "c688"
+      }
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

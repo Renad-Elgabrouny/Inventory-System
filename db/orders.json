@@ -1,20 +1,51 @@
-{
-  "orders": [
+{"orders": [
     {
-      "id": 1,
-      "supplierId": 1,
-      "productId": 1,
-      "quantity": 50,
+      "id": "1773823942509",
+      "supplierId": "1",
+      "productId": "1",
+      "quantity": 30,
       "status": "pending",
-      "date": "2026-03-13"
+      "date": "2026-03-18"
     },
     {
-      "id": 2,
-      "supplierId": 2,
-      "productId": 3,
+      "id": "1773824247067",
+      "supplierId": "2",
+      "productId": "2",
+      "quantity": 10,
+      "status": "cancelled",
+      "date": "2026-03-18"
+    },
+    {
+      "id": "1773824268313",
+      "supplierId": "2",
+      "productId": "3",
+      "quantity": 20,
+      "status": "received",
+      "date": "2026-03-18"
+    },
+    {
+      "id": "1773824284846",
+      "supplierId": "5",
+      "productId": "3",
+      "quantity": 40,
+      "status": "pending",
+      "date": "2026-03-18"
+    },
+    {
+      "id": "1773824456791",
+      "supplierId": "3",
+      "productId": "5",
       "quantity": 10,
       "status": "received",
-      "date": "2026-03-10"
+      "date": "2026-03-18"
+    },
+    {
+      "id": "1773828435738",
+      "supplierId": "5",
+      "productId": "6",
+      "quantity": 1000,
+      "status": "pending",
+      "date": "2026-03-18"
     }
   ]
 }

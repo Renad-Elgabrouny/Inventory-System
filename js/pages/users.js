@@ -27,37 +27,6 @@ function reselectElements() {
   tbody = document.querySelector("tbody");
 }// make them in a function so that i can reselect then after rendering the contentArea content
 
-function visitPages() {
-  dashboard.addEventListener("click", function (e) {
-    sidebarItems.forEach(item => {
-      item.parentElement.classList.remove("active-item");
-    });
-    dashboard.classList.add("active-item");
-    window.location = "../../index.html";
-  });
-  users.addEventListener("click", function (e) {
-    sidebarItems.forEach(item => {
-      item.parentElement.classList.remove("active-item");
-    });
-    users.classList.add("active-item");
-    window.location = "../../pages/users.html";
-  });
-  report.addEventListener("click", function (e) {
-    sidebarItems.forEach(item => {
-      item.parentElement.classList.remove("active-item");
-    });
-    report.classList.add("active-item");
-    window.location = "../../pages/reports.html";
-  });
-  logs.addEventListener("click", function (e) {
-    sidebarItems.forEach(item => {
-      item.parentElement.classList.remove("active-item");
-    });
-    logs.classList.add("active-item");
-    window.location = "../../pages/activityLog.html";
-  });
-}// this function handle going from page to another using the items in the side navbar
-
 async function renderAreaContent() {
   const res = await fetch("../../pages/users.html");
   const html = await res.text();
@@ -99,8 +68,8 @@ function renderUsers(allUsers) {
     }
     tbody.appendChild(row);
   });
-  deleteUsers = document.querySelectorAll(".edit-user");
-  editUsers = document.querySelectorAll(".delete-user");
+  editUsers = document.querySelectorAll(".edit-user");
+  deleteUsers = document.querySelectorAll(".delete-user");
 }// this function will load the data from json to table rows
 
 function setUpSearch(value) {
@@ -260,7 +229,6 @@ export async function loadUserWindow() {
   try {
     await renderAreaContent();
     reselectElements();
-    visitPages();
     await initModal();
     allUsers = await UserService.getAllUsers();
     setupCards();

@@ -53,6 +53,16 @@
       .table tbody td {
         color: #6c757d !important;
       }
+      .low-stocks {
+        background-color: rgb(228, 164, 164);
+        color: rgb(199, 75, 75);
+        border-radius: 10px;
+      }
+      .inv-values {
+        background-color: rgb(153, 234, 164);
+        color: rgb(83, 182, 83);
+        border-radius: 10px;
+      }
     </style>
   </head>
 
@@ -118,119 +128,188 @@
           <div
             class="d-flex bg-white w-100 justify-content-between align-items-center border-bottom px-4 py-2"
           >
-            <!-- Search -->
-            <div class="d-flex bg-light w-25 rounded px-2 align-items-center">
-              <i class="fa-solid fa-magnifying-glass text-muted"></i>
-              <input
-                type="text"
-                placeholder="Search..."
-                class="form-control border-0 bg-transparent search"
-              />
+            <div class="d-flex align-items-center gap-2">
+              <!-- Search -->
+              <div class="d-flex bg-light rounded px-2 align-items-center me-4">
+                <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  class="form-control border-0 bg-transparent search"
+                />
+              </div>
+              <!-- Category deop down list -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-secondary dropdown-toggle category-list"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Categories
+                </button>
+
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Electronics</a></li>
+                  <li><a class="dropdown-item" href="#">Furniture</a></li>
+                  <li><a class="dropdown-item" href="#">Accessories</a></li>
+                </ul>
+              </div>
             </div>
           </div>
 
           <!-- Content Area -->
           <div class="p-4 contentArea">
-            <!-- <div class="d-flex justify-content-between">
-              <div>
-                <h4 class="fw-bold">User Management</h4>
-                <p class="text-muted">
-                  Manage system access levels and monitor active team members.
-                </p>
-              </div>
-              <div>
-                
-                <button class="btn add-btn add-user">
-                  <i class="fa-solid fa-user-plus me-1"></i> Add User
-                </button>
-              </div>
-            </div>
-
-           
-            <div class="row g-3 mt-3">
-              <div class="col-md-6">
+            <!-- Top Stats -->
+            <div class="row g-3">
+              <div class="col-md-3">
                 <div
                   class="bg-white p-3 rounded shadow-sm d-flex align-content-center"
                 >
                   <div class="total-users align-content-center px-3 me-4">
-                    <i class="fa-solid fa-user-group me-2"></i>
+                    <i class="fa-solid fa-boxes-stacked total-users"></i>
                   </div>
-                  <div class="total-u">
-                    <p class="text-muted mb-1">Total Users</p>
+                  <div class="total-products">
+                    <p class="text-muted mb-1">Total Products</p>
                     <h5>1,284</h5>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-3">
                 <div
                   class="bg-white p-3 rounded shadow-sm d-flex align-content-center"
                 >
                   <div class="total-admins align-content-center px-3 me-4">
-                    <i class="fa-solid fa-user-shield"></i>
+                    <i class="fa-solid fa-users me-2"></i>
                   </div>
-                  <div class="total-a">
-                    <p class="text-muted mb-1">Admins</p>
-                    <h5>14</h5>
+                  <div class="total-suppliers">
+                    <p class="text-muted mb-1">Total Suppliers</p>
+                    <h5>42</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div
+                  class="bg-danger-subtle p-3 rounded shadow-sm border border-danger d-flex align-content-center"
+                >
+                  <div class="low-stocks align-content-center px-3 me-4">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </div>
+                  <div class="low-stock-items text-danger">
+                    <p class="text-muted mb-1">Low Stock Items</p>
+                    <h5>12</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div
+                  class="bg-white p-3 rounded shadow-sm d-flex align-content-center"
+                >
+                  <div class="inv-values align-content-center px-3 me-4">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                  </div>
+                  <div class="inventory-values">
+                    <p class="text-muted mb-1">Inventory Value</p>
+                    <h5>$284,500</h5>
                   </div>
                 </div>
               </div>
             </div>
 
-            
-            <div class="bg-white rounded shadow-sm mt-4 p-3 table-responsive">
-              <table class="table align-middle">
-                <thead>
-                  <tr class="table-light">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Password</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody class="text-muted"> -->
-            <!-- <tr>
-                    <td>Sarah Jenkins</td>
-                    <td>sarah@example.com</td>
-                    <td>123456S</td>
-                    <td><span class="badge text-bg-info">Admin</span></td>
-                    <td>
-                      <i class="fa-solid fa-pen me-3 actions edit-user"></i
-                      ><i
-                        class="fa-regular fa-trash-can actions delete-user"
-                      ></i>
-                    </td>
-                  </tr>
+            <!-- Quick Actions -->
+            <div class="mt-4">
+              <h6 class="text-muted mb-3">QUICK ACTIONS</h6>
 
-                  <tr>
-                    <td>Michael Chen</td>
-                    <td>michael@example.com</td>
-                    <td>123456S</td>
-                    <td><span class="badge text-bg-secondary">User</span></td>
-                    <td>
-                      <i class="fa-solid fa-pen me-3 actions edit-user"></i
-                      ><i
-                        class="fa-regular fa-trash-can actions delete-user"
-                      ></i>
-                    </td>
-                  </tr>
+              <button class="btn add-btn me-2">
+                <i class="fa-solid fa-plus me-1"></i> Add Product
+              </button>
 
-                  <tr>
-                    <td>Emma Wilson</td>
-                    <td>emma@example.com</td>
-                    <td>123456S</td>
-                    <td><span class="badge text-bg-secondary">User</span></td>
-                    <td>
-                      <i class="fa-solid fa-pen me-3 actions edit-user"></i
-                      ><i
-                        class="fa-regular fa-trash-can actions delete-user"
-                      ></i>
-                    </td>
-                  </tr> -->
-            <!-- </tbody>
-              </table>
-            </div>-->
+              <button class="btn btn-outline-secondary me-2">
+                <i class="fa-solid fa-lock me-1"></i> Create Purchase Order
+              </button>
+
+              <button class="btn btn-outline-secondary me-2">
+                <i class="fa-solid fa-arrow-up-down me-1"></i> Adjust Stock
+              </button>
+
+              <button class="btn btn-outline-primary">
+                <i class="fa-solid fa-tags me-1"></i> Add Category
+              </button>
+            </div>
+
+            <!-- Tables -->
+            <div class="row mt-4 g-3">
+              <!-- Low Stock -->
+              <div class="col-lg-8">
+                <div class="bg-white p-3 rounded shadow-sm">
+                  <h6 class="mb-3">Low Stock</h6>
+                  <table class="table low-stock-table">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Product</th>
+                        <th>SKU</th>
+                        <th>Stock</th>
+                        <th>Reorder</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td>Wireless Keyboard</td>
+                        <td>WMK-7421</td>
+                        <td class="text-danger">8 units</td>
+                        <td>15</td>
+                      </tr>
+
+                      <tr>
+                        <td>UltraWide Monitor</td>
+                        <td>MON-UW34</td>
+                        <td class="text-warning">12 units</td>
+                        <td>20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Activity -->
+              <div class="col-lg-4">
+                <div class="bg-white p-3 rounded shadow-sm">
+                  <h6 class="mb-3">Recent Activity</h6>
+
+                  <div class="table-responsive">
+                    <table class="table align-middle activity-table">
+                      <thead class="table-light">
+                        <tr>
+                          <th>Action</th>
+                          <th>Entity</th>
+                          <th>User</th>
+                          <th>Date</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>New shipment received</td>
+                          <td>Product</td>
+                          <td>Admin</td>
+                          <td>Today</td>
+                        </tr>
+                        <tr>
+                          <td>New shipment received</td>
+                          <td>Product</td>
+                          <td>Admin</td>
+                          <td>Today</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

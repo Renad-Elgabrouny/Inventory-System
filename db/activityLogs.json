@@ -1,14 +1,6 @@
 {
   "activityLogs": [
     {
-      "id": "2",
-      "action": "Product Created",
-      "entity": "product",
-      "entityId": 1,
-      "userId": "a370",
-      "date": "2026-03-15"
-    },
-    {
       "id": "3",
       "action": "Product Created",
       "entity": "product",
@@ -90,5 +82,151 @@
       "password": "R12345",
       "role": "user"
     }
-  ]
+  ],
+  "suppliers": [
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "867c"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "d2a5"
+    },
+    {
+      "id": "5845",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "662d",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "85b9",
+      "ssc": "1111111",
+      "name": "without e",
+      "phone": "01062765839",
+      "email": "nnnnnnnnnnn",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "9e93",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "4bd1",
+      "ssc": "5555555",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "30ec",
+      "ssc": "6666666666",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "37e7",
+      "ssc": "5555555",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "europ",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "4710",
+      "ssc": "9999999",
+      "name": "nadaa",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "1010101",
+      "name": "sameh",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "australia",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      },
+      "id": "8e43"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -1,3 +1,4 @@
+import { initProductPage } from "../../services/productService.js";
 let modalInstance;
 
 export const initModal = async () => {
@@ -353,8 +354,8 @@ productItem.addEventListener("click", async function () {
         const res = await fetch("./pages/products.html");
         const html = await res.text();
         document.querySelector(".contentArea").innerHTML = html;
-        const module = await import("../../services/productService.js");
-        module.initProductPage();
+        // const module = await import("../../services/productService.js");
+        initProductPage();
     } catch (error) {
         console.error("Error loading product page:", error);
     }

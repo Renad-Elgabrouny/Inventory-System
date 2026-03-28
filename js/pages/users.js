@@ -1,6 +1,7 @@
 import { UserService } from "../../services/userService.js";
 import { initModal, openModal, closeModal } from "../components/modal.js";
 import { AuthService } from "../../services/authService.js";
+import { ActivityService } from "../../services/activityLogService.js";
 // Selectors
 const dashboard = document.querySelector(".dashboard");
 const users = document.querySelector(".users");
@@ -192,9 +193,12 @@ function setupEditUser() {
       try {
         const updatedUser = await UserService.updateUser(userId, userData);
 
-        const index = allUsers.findIndex(u => u.id == userId);
-        allUsers[index] = updatedUser;
-
+        await ActivityService.createActivity({
+          action: "User Updated",
+          entity: "users",
+          userId: AuthService.getCurrentUser().id,
+          date: new Date().toISOString().split("T")[0]
+        });
         renderUsers(allUsers);
         setupCards();
         closeModal();

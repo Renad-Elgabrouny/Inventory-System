@@ -327,7 +327,7 @@
       "productName": "Keyboard",
       "sku": "KB-100",
       "quantity": 10,
-      "status": "pending",
+      "status": "received",
       "date": "2026-03-20"
     },
     {
@@ -360,7 +360,7 @@
       "productName": "Keyboard",
       "sku": "KB-100",
       "quantity": 22,
-      "status": "pending",
+      "status": "received",
       "date": "2026-03-23"
     },
     {
@@ -483,14 +483,6 @@
       "quantity": 2,
       "status": "canceled",
       "date": "2026-03-29"
-    },
-    {
-      "id": "1774741109683",
-      "supplierId": "S01",
-      "productId": "P03",
-      "quantity": 25,
-      "status": "pending",
-      "date": "2026-03-28"
     }
   ],
   "suppliers": [

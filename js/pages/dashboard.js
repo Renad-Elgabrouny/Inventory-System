@@ -2,7 +2,7 @@ import { AuthService } from "../../services/authService.js";
 import { loadUserWindow } from "./users.js";
 import { loadLogWindow } from "./activityLog.js";
 import { initModal, openModal, closeModal } from "../components/modal.js";
-
+import { initOrders } from "./pages/order.js";
 // Selectors
 const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -18,7 +18,6 @@ const Category_API = "http://localhost:3000/categories";
 const Users_API = "http://localhost:3000/users";
 const Adjustment_API = "http://localhost:3000/adjustment";
 
-
 function checkRole() {
   const usr = AuthService.getCurrentUser();
   usersItem.classList.toggle("d-none", usr.role !== "admin");
@@ -27,7 +26,6 @@ function checkRole() {
 function renderUserProfile() {
   profile.innerText = AuthService.getCurrentUser().name;
 }
-
 
 async function loadCategoryDropdown() {
   try {
@@ -45,18 +43,22 @@ async function loadCategoryDropdown() {
 
 function clearCategoryDropdown() {
   const dropdownMenu = document.querySelector(".dropdown-menu");
-  if (dropdownMenu) dropdownMenu.innerHTML = `<li><a class="dropdown-item" href="#">All</a></li>`;
+  if (dropdownMenu)
+    dropdownMenu.innerHTML = `<li><a class="dropdown-item" href="#">All</a></li>`;
 }
 
 function renderCardsData(allProducts, allSuppliers) {
-  document.querySelector(".total-products h5").textContent = allProducts.length.toLocaleString();
-  document.querySelector(".total-suppliers h5").textContent = allSuppliers.length;
+  document.querySelector(".total-products h5").textContent =
+    allProducts.length.toLocaleString();
+  document.querySelector(".total-suppliers h5").textContent =
+    allSuppliers.length;
   const lowStockItems = allProducts.filter((p) => +p.stock < +p.Reorder_Level);
-  document.querySelector(".low-stock-items h5").textContent = lowStockItems.length;
+  document.querySelector(".low-stock-items h5").textContent =
+    lowStockItems.length;
   const totalUnits = allProducts.reduce((sum, p) => sum + (+p.stock || 0), 0);
-  document.querySelector(".inventory-values h5").textContent = totalUnits.toLocaleString() + " units";
+  document.querySelector(".inventory-values h5").textContent =
+    totalUnits.toLocaleString() + " units";
 }
-
 
 function renderLowStockTable(allProducts) {
   const tbody = document.querySelector(".low-stock-table tbody");
@@ -86,28 +88,33 @@ function renderActivityTable(activities, users) {
     return;
   }
   const userMap = {};
-  users.forEach((u) => { userMap[u.id] = u.name; });
-  [...activities].reverse().slice(0, 5).forEach((log) => {
-    const userName = userMap[log.userId] || log.userId;
-    tbody.innerHTML += `
+  users.forEach((u) => {
+    userMap[u.id] = u.name;
+  });
+  [...activities]
+    .reverse()
+    .slice(0, 5)
+    .forEach((log) => {
+      const userName = userMap[log.userId] || log.userId;
+      tbody.innerHTML += `
       <tr>
         <td>${log.action}</td>
         <td>${log.entity}</td>
         <td>${userName}</td>
         <td>${log.date}</td>
       </tr>`;
-  });
+    });
 }
-
 
 async function loadDashboardData() {
   try {
-    const [productsRes, suppliersRes, activityRes, usersRes] = await Promise.all([
-      fetch(Product_API),
-      fetch(Supplier_API),
-      fetch(Activity_API),
-      fetch(Users_API),
-    ]);
+    const [productsRes, suppliersRes, activityRes, usersRes] =
+      await Promise.all([
+        fetch(Product_API),
+        fetch(Supplier_API),
+        fetch(Activity_API),
+        fetch(Users_API),
+      ]);
     const allProducts = productsRes.ok ? await productsRes.json() : [];
     const allSuppliers = suppliersRes.ok ? await suppliersRes.json() : [];
     const activities = activityRes.ok ? await activityRes.json() : [];
@@ -120,9 +127,7 @@ async function loadDashboardData() {
   }
 }
 
-
 const dashboardHTML = document.querySelector(".contentArea").innerHTML;
-
 
 function restoreDashboard() {
   document.querySelector(".contentArea").innerHTML = dashboardHTML;
@@ -130,7 +135,6 @@ function restoreDashboard() {
   loadCategoryDropdown();
   initQuickActions();
 }
-
 
 async function openAddProductModal() {
   const res = await fetch(Category_API);
@@ -183,35 +187,45 @@ async function openAddProductModal() {
 
   const modalEl = openModal("Add Product", content);
 
-  modalEl.querySelector("#add-product-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const name = modalEl.querySelector("#dp-name").value.trim();
-    const category = modalEl.querySelector("#dp-category").value;
-    const supplier = modalEl.querySelector("#dp-supplier").value.trim();
-    const stock = modalEl.querySelector("#dp-stock").value;
-    const reorder = modalEl.querySelector("#dp-reorder").value;
-    const sku = modalEl.querySelector("#dp-sku").value.trim();
-    const image = modalEl.querySelector("#dp-image").value.trim();
+  modalEl
+    .querySelector("#add-product-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = modalEl.querySelector("#dp-name").value.trim();
+      const category = modalEl.querySelector("#dp-category").value;
+      const supplier = modalEl.querySelector("#dp-supplier").value.trim();
+      const stock = modalEl.querySelector("#dp-stock").value;
+      const reorder = modalEl.querySelector("#dp-reorder").value;
+      const sku = modalEl.querySelector("#dp-sku").value.trim();
+      const image = modalEl.querySelector("#dp-image").value.trim();
 
-    if (!name || !category || !supplier || !stock || !reorder || !sku) {
-      alert("Please fill in all required fields.");
-      return;
-    }
-    try {
-      const postRes = await fetch(Product_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, category, supplier, stock, Reorder_Level: reorder, sku, image }),
-      });
-      if (!postRes.ok) throw new Error("Failed to add product");
-      alert("Product added successfully!");
-      closeModal();
-      loadDashboardData();
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Try again.");
-    }
-  });
+      if (!name || !category || !supplier || !stock || !reorder || !sku) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+      try {
+        const postRes = await fetch(Product_API, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            category,
+            supplier,
+            stock,
+            Reorder_Level: reorder,
+            sku,
+            image,
+          }),
+        });
+        if (!postRes.ok) throw new Error("Failed to add product");
+        alert("Product added successfully!");
+        closeModal();
+        loadDashboardData();
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong. Try again.");
+      }
+    });
 }
 
 async function openAddCategoryModal() {
@@ -219,13 +233,17 @@ async function openAddCategoryModal() {
   const categories = res.ok ? await res.json() : [];
 
   const listItems = categories.length
-    ? categories.map((cat) => `
+    ? categories
+        .map(
+          (cat) => `
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <span>${cat.name}</span>
           <button class="btn btn-sm btn-outline-danger delete-cat-btn" data-id="${cat.id}">
             <i class="fa-solid fa-trash"></i>
           </button>
-        </li>`).join("")
+        </li>`,
+        )
+        .join("")
     : `<li class="list-group-item text-muted">No categories yet.</li>`;
 
   const content = `
@@ -244,7 +262,10 @@ async function openAddCategoryModal() {
 
   modalEl.querySelector("#save-cat-btn").addEventListener("click", async () => {
     const name = modalEl.querySelector("#new-cat-name").value.trim();
-    if (!name) { alert("Please enter a category name."); return; }
+    if (!name) {
+      alert("Please enter a category name.");
+      return;
+    }
     await fetch(Category_API, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -350,14 +371,23 @@ async function openAdjustStockModal() {
   modalEl.querySelector("#adj-btn").addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if (!selectedProduct) { alert("Please select a product."); return; }
+    if (!selectedProduct) {
+      alert("Please select a product.");
+      return;
+    }
 
     const action = modalEl.querySelector("#adj-action").value;
     const amountValue = modalEl.querySelector("#adj-amount").value;
     const reason = modalEl.querySelector("#adj-reason").value.trim();
 
-    if (!action) { alert("Please select an action."); return; }
-    if (amountValue === "" || +amountValue < 0) { alert("Please enter a valid stock value."); return; }
+    if (!action) {
+      alert("Please select an action.");
+      return;
+    }
+    if (amountValue === "" || +amountValue < 0) {
+      alert("Please enter a valid stock value.");
+      return;
+    }
 
     const oldStock = +selectedProduct.stock;
     const newStock = +amountValue;
@@ -367,11 +397,14 @@ async function openAdjustStockModal() {
       return;
     }
     if (action === "increase" && newStock <= oldStock) {
-      alert(`New value must be greater than current stock (${oldStock}) when increasing.`);
+      alert(
+        `New value must be greater than current stock (${oldStock}) when increasing.`,
+      );
       return;
     }
 
-    const quantity = action === "decrease" ? oldStock - newStock : newStock - oldStock;
+    const quantity =
+      action === "decrease" ? oldStock - newStock : newStock - oldStock;
 
     try {
       const patchRes = await fetch(`${Product_API}/${selectedProduct.id}`, {
@@ -398,14 +431,12 @@ async function openAdjustStockModal() {
       alert("Stock adjusted successfully!");
       closeModal();
       loadDashboardData();
-
     } catch (err) {
       console.error(err);
       alert("Something went wrong. Try again.");
     }
   });
 }
-
 
 function initQuickActions() {
   const addBtn = document.querySelector(".btn.add-btn");
@@ -426,10 +457,23 @@ function checkItems() {
     supplierItem.classList.remove("active-item");
     item.classList.add("active-item");
 
-    if (item.classList.contains("users")) { clearCategoryDropdown(); loadUserWindow(); }
-    if (item.classList.contains("activities")) { clearCategoryDropdown(); loadLogWindow(); }
-    if (item.classList.contains("products")) { clearCategoryDropdown(); }
-    if (item.classList.contains("dashboard")) { restoreDashboard(); }
+    if (item.classList.contains("users")) {
+      clearCategoryDropdown();
+      loadUserWindow();
+    }
+    if (item.classList.contains("activities")) {
+      clearCategoryDropdown();
+      loadLogWindow();
+    }
+    if (item.classList.contains("products")) {
+      clearCategoryDropdown();
+    }
+    if (item.classList.contains("dashboard")) {
+      restoreDashboard();
+    }
+    if (item.classList.contains("orders")) {
+      window.location.href = "../../pages/orders.html";
+    }
   });
 
   supplierItem.addEventListener("click", () => clearCategoryDropdown());

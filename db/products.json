@@ -320,20 +320,177 @@
   ],
   "orders": [
     {
-      "id": "1",
-      "supplierId": 1,
-      "productId": 1,
-      "quantity": 50,
+      "id": "ORD001",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P01",
+      "productName": "Keyboard",
+      "sku": "KB-100",
+      "quantity": 10,
       "status": "pending",
-      "date": "2026-03-13"
+      "date": "2026-03-20"
     },
     {
-      "id": "2",
-      "supplierId": 2,
-      "productId": 3,
-      "quantity": 10,
+      "id": "ORD002",
+      "supplierId": "S02",
+      "supplierName": "Office Max",
+      "productId": "P02",
+      "productName": "Chair",
+      "sku": "CH-200",
+      "quantity": 5,
       "status": "received",
-      "date": "2026-03-10"
+      "date": "2026-03-21"
+    },
+    {
+      "id": "ORD003",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P03",
+      "productName": "Monitor",
+      "sku": "MN-500",
+      "quantity": 2,
+      "status": "canceled",
+      "date": "2026-03-22"
+    },
+    {
+      "id": "ORD004",
+      "supplierId": "S03",
+      "supplierName": "Logistics Pro",
+      "productId": "P01",
+      "productName": "Keyboard",
+      "sku": "KB-100",
+      "quantity": 22,
+      "status": "pending",
+      "date": "2026-03-23"
+    },
+    {
+      "id": "ORD005",
+      "supplierId": "S02",
+      "supplierName": "Office Max",
+      "productId": "P04",
+      "productName": "Desk",
+      "sku": "DSK-99",
+      "quantity": 1,
+      "status": "pending",
+      "date": "2026-03-24"
+    },
+    {
+      "id": "ORD006",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P02",
+      "productName": "Chair",
+      "sku": "CH-200",
+      "quantity": 15,
+      "status": "received",
+      "date": "2026-03-25"
+    },
+    {
+      "id": "ORD007",
+      "supplierId": "S03",
+      "supplierName": "Logistics Pro",
+      "productId": "P05",
+      "productName": "Mouse",
+      "sku": "MS-33",
+      "quantity": 50,
+      "status": "pending",
+      "date": "2026-03-26"
+    },
+    {
+      "id": "ORD008",
+      "supplierId": "S02",
+      "supplierName": "Office Max",
+      "productId": "P01",
+      "productName": "Keyboard",
+      "sku": "KB-100",
+      "quantity": 8,
+      "status": "canceled",
+      "date": "2026-03-27"
+    },
+    {
+      "id": "ORD009",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P03",
+      "productName": "Monitor",
+      "sku": "MN-500",
+      "quantity": 40,
+      "status": "pending",
+      "date": "2026-03-28"
+    },
+    {
+      "id": "ORD010",
+      "supplierId": "S03",
+      "supplierName": "Logistics Pro",
+      "productId": "P04",
+      "productName": "Desk",
+      "sku": "DSK-99",
+      "quantity": 12,
+      "status": "received",
+      "date": "2026-03-28"
+    },
+    {
+      "id": "ORD011",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P05",
+      "productName": "Mouse",
+      "sku": "MS-33",
+      "quantity": 100,
+      "status": "pending",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "ORD012",
+      "supplierId": "S02",
+      "supplierName": "Office Max",
+      "productId": "P02",
+      "productName": "Chair",
+      "sku": "CH-200",
+      "quantity": 6,
+      "status": "pending",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "ORD013",
+      "supplierId": "S03",
+      "supplierName": "Logistics Pro",
+      "productId": "P01",
+      "productName": "Keyboard",
+      "sku": "KB-100",
+      "quantity": 14,
+      "status": "received",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "ORD014",
+      "supplierId": "S02",
+      "supplierName": "Office Max",
+      "productId": "P03",
+      "productName": "Monitor",
+      "sku": "MN-500",
+      "quantity": 3,
+      "status": "received",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "ORD015",
+      "supplierId": "S01",
+      "supplierName": "Global Tech",
+      "productId": "P04",
+      "productName": "Desk",
+      "sku": "DSK-99",
+      "quantity": 2,
+      "status": "canceled",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "1774741109683",
+      "supplierId": "S01",
+      "productId": "P03",
+      "quantity": 25,
+      "status": "pending",
+      "date": "2026-03-28"
     }
   ],
   "suppliers": [

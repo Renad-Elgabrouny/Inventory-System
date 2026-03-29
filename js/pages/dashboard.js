@@ -4,6 +4,7 @@ import { loadLogWindow } from "./activityLog.js";
 import { initModal, openModal, closeModal } from "../components/modal.js";
 import { ActivityService } from "../../services/activityLogService.js";
 import { initProductPage } from "../../services/productService.js";
+import { initReportPage } from "../../services/reportService.js";
 // Selectors
 const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -42,6 +43,18 @@ async function loadCategoryDropdown() {
     });
   } catch (err) {
     console.error("Failed to load categories for dropdown:", err);
+  }
+}
+
+
+async function loadReportsPage() {
+  try {
+    const res = await fetch("../../pages/reports.html");
+    const html = await res.text();
+    document.querySelector(".contentArea").innerHTML = html;
+    if (typeof initReportPage === "function") initReportPage();
+  } catch (err) {
+    console.error("Failed to load reports page:", err);
   }
 }
 
@@ -461,6 +474,10 @@ function checkItems() {
       loadProductsPage();  // initProductPage is called inside this
     }
     else if (item.classList.contains("dashboard")) { restoreDashboard(); }
+    else if (item.classList.contains("report")) {
+      clearCategoryDropdown();
+      loadReportsPage();
+    }
   });
 
   supplierItem.addEventListener("click", () => clearCategoryDropdown());

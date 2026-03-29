@@ -353,27 +353,42 @@ document.addEventListener("DOMContentLoaded", () => {
     menu.addEventListener("click", async function (e) {
         const productItem = e.target.closest(".product-item");
         if (!productItem) return;
-
-        // إزالة أي active-item موجود
         document.querySelectorAll(".menu > div").forEach(item => {
             item.classList.remove("active-item");
         });
-
-        // إضافة active-item للعنصر اللي اتضغط
         productItem.classList.add("active-item");
-
-        // تحميل صفحة المنتجات ديناميكيًا
         try {
             const res = await fetch("./pages/products.html");
             const html = await res.text();
             const contentArea = document.querySelector(".contentArea");
             if (!contentArea) throw new Error(".contentArea not found");
             contentArea.innerHTML = html;
-
-            // استدعاء تهيئة صفحة المنتجات
             initProductPage();
         } catch (error) {
             console.error("Error loading product page:", error);
         }
     });
 });
+// const report = document.querySelector(".report");
+
+// report.addEventListener("click", async function () {
+//     document.querySelectorAll(".menu > div").forEach(item => {
+//         item.classList.remove("active-item");
+//     });
+
+//     report.classList.add("active-item");
+
+//     try {
+//         const res = await fetch("./pages/reports.html");
+//         const html = await res.text();
+//         document.querySelector(".contentArea").innerHTML = html;
+//         // const module = await import("../../services/reportService.js");
+//         // initProductPage();
+//         const script = document.createElement("script");
+//         script.src = "../services/reportService.js";
+//         // script.type = "module"; // optional
+//         document.body.appendChild(script);
+//     } catch (error) {
+//         console.error("Error loading product page:", error);
+//     }
+// });

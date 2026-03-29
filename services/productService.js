@@ -1,4 +1,4 @@
-import { add_Product_API, adjsment_stock, adjustment_API, categoryName, product, Product_API } from "../services/fetch.js"
+import { add_Product_API, adjsment_stock, adjustment_API, categoryName, product, Product_API, supplierName } from "../services/fetch.js"
 import { AuthService } from "../../services/authService.js";
 import { ActivityService } from "../../services/activityLogService.js";
 export function initProductPage() {
@@ -39,6 +39,7 @@ export function initProductPage() {
     let product_data = Array.isArray(product) ? product : []
     let adjustment_data = Array.isArray(adjsment_stock) ? adjsment_stock : []
     let category_data = Array.isArray(categoryName) ? categoryName : []
+    let supplier_data = Array.isArray(supplierName) ? supplierName : []
 
 
 
@@ -214,6 +215,12 @@ export function initProductPage() {
         let Unique_Category = [...new Set(category_data.map(item => item.name))]
         Unique_Category.forEach((cat) => {
             category.innerHTML += `<option class="options" value="${cat}">${cat}</option>`
+        })
+
+        supplier.innerHTML = `<option class="options" value="">select supplier</option>`
+        let Unique_supplier = [...new Set(supplier_data.map(item => item.name))]
+        Unique_supplier.forEach((sup) => {
+            supplier.innerHTML += `<option class="options" value="${sup}">${sup}</option>`
         })
     })
     clouse.addEventListener("click", () => {

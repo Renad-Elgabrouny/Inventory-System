@@ -5,7 +5,7 @@
       "name": "laptopssss",
       "category": "electronic",
       "supplier": "karim yasser",
-      "stock": "50",
+      "stock": "35",
       "Reorder_Level": "100",
       "sku": "lopp",
       "price": "2000",
@@ -175,6 +175,16 @@
       "sku": "Cls",
       "price": "23000",
       "image": ""
+    },
+    {
+      "id": "4c81",
+      "name": "laptop",
+      "category": "Computer Accessories",
+      "supplier": "noha",
+      "stock": "9",
+      "Reorder_Level": "2",
+      "sku": "lappp",
+      "image": ""
     }
   ],
   "adjustment": [
@@ -240,33 +250,61 @@
       "reason": "theft",
       "old_Quantity": "120",
       "New_Quantity": "110"
+    },
+    {
+      "id": "9477",
+      "product_Name": "lopp",
+      "type": "decrease",
+      "quantity": "15",
+      "reason": "damage",
+      "old_Quantity": "50",
+      "New_Quantity": "35"
     }
   ],
   "categories": [
     {
       "id": "1",
       "name": "Computer Accessories",
-      "description": ["Mice", "Keyboards", "Peripherals"]
+      "description": [
+        "Mice",
+        "Keyboards",
+        "Peripherals"
+      ]
     },
     {
       "id": "2",
       "name": "Displays",
-      "description": ["Monitors", "Screens"]
+      "description": [
+        "Monitors",
+        "Screens"
+      ]
     },
     {
       "id": "3",
       "name": "Gaming",
-      "description": ["PlayStation", "Xbox", "PC Gaming"]
+      "description": [
+        "PlayStation",
+        "Xbox",
+        "PC Gaming"
+      ]
     },
     {
       "id": "4",
       "name": "Mobile Devices",
-      "description": ["Smartphones", "Tablets", "Accessories"]
+      "description": [
+        "Smartphones",
+        "Tablets",
+        "Accessories"
+      ]
     },
     {
       "id": "5",
       "name": "Office Supplies",
-      "description": ["Stationery", "Printers", "Furniture"]
+      "description": [
+        "Stationery",
+        "Printers",
+        "Furniture"
+      ]
     }
   ],
   "activityLogs": [
@@ -318,6 +356,69 @@
       "entity": "orders",
       "userId": "3",
       "date": "2026-03-22"
+    },
+    {
+      "id": "0866",
+      "action": "User Updated",
+      "entity": "users",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "63ce",
+      "action": "User Deleted",
+      "entity": "users",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "f647",
+      "action": "Product Added",
+      "entity": "products",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "763a",
+      "action": "Product Updated",
+      "entity": "products",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "661d",
+      "action": "Product Deleted",
+      "entity": "products",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "34fc",
+      "action": "Product delete",
+      "entity": "products",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "de7b",
+      "action": "Order Created",
+      "entity": "orders",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "6237",
+      "action": "Order Updated",
+      "entity": "orders",
+      "userId": "3",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "0b0e",
+      "action": "Order Received",
+      "entity": "orders",
+      "userId": "3",
+      "date": "2026-03-29"
     }
   ],
   "users": [
@@ -383,6 +484,20 @@
       "email": "nour@inventory.com",
       "password": "User@2026",
       "role": "user"
+    },
+    {
+      "id": "7836",
+      "name": "Renad Khaled",
+      "email": "renadkhaled1234@gmai.com",
+      "password": "R12345678",
+      "role": "user"
+    },
+    {
+      "id": "cc17",
+      "name": "Masa Khaled",
+      "email": "masakhaled@gmail.com",
+      "password": "M12345678",
+      "role": "user"
     }
   ],
   "orders": [
@@ -437,8 +552,8 @@
       "productId": "P04",
       "productName": "Standing Desk",
       "sku": "DSK-99",
-      "quantity": 1,
-      "status": "pending",
+      "quantity": 4,
+      "status": "received",
       "date": "2026-03-24"
     },
     {
@@ -549,6 +664,14 @@
       "sku": "DSK-99",
       "quantity": 2,
       "status": "canceled",
+      "date": "2026-03-29"
+    },
+    {
+      "id": "1774818232477",
+      "supplierId": "123",
+      "productId": "111",
+      "quantity": 7,
+      "status": "pending",
       "date": "2026-03-29"
     }
   ],

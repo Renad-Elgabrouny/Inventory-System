@@ -1,0 +1,98 @@
+<style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+</style>
+            <div class="col-lg-10 d-flex flex-column">
+
+                <header class="bg-white border-bottom px-4 py-3 d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0 fw-bold">Purchase Orders</h4>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-primary px-4 d-flex align-items-center"
+                            onclick="window.openCreateModal()">
+                            <i class="fa-solid fa-plus me-2"></i> Create New PO
+                        </button>
+
+                    </div>
+                </header>
+
+                <div class="p-4 pb-0">
+                    <div class="row g-3 align-items-center mb-4">
+                        <div class="col-md-6">
+                            <div class="input-group bg-white border rounded px-2 align-items-center shadow-sm">
+                                <i class="fa-solid fa-magnifying-glass text-muted me-2"></i>
+                                <input type="text" class="form-control border-0 shadow-none py-2"
+                                    placeholder="Search by product, ID or supplier...">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select id="statusFilter" class="form-select border shadow-sm py-2">
+                              <option selected>Status: All</option>
+                              <option value="pending">Pending</option>
+                              <option value="received">Received</option>
+                           </select>
+
+                        </div>
+                        <div class="col-md-3">
+                           <select id="supplierFilter" class="form-select border shadow-sm py-2">
+                                <option selected>Supplier: All</option>
+                           </select>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm rounded-3 overflow-hidden">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light border-bottom">
+                                    <tr class="text-muted small text-uppercase">
+                                        <th class="ps-4 py-3">Order ID</th>
+                                        <th>Supplier</th>
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th class="text-end pe-4">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody" class="border-top-0">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div
+                            class="card-footer bg-white border-top py-3 px-4 d-flex justify-content-between align-items-center">
+                            <small class="text-muted">SHOWING 1 TO 3 OF 3 ORDERS</small>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline-secondary"><i
+                                        class="fa-solid fa-chevron-left"></i></button>
+                                <button class="btn btn-sm btn-outline-secondary"><i
+                                        class="fa-solid fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="modal" style="display: none;">
+        <div class="modal-card bg-white p-4 rounded-3 shadow" style="width: 400px;">
+            <h3 id="modalTitle" class="mb-3">New Order</h3>
+            <input id="supplierId" class="form-control mb-2" placeholder="Supplier ID" />
+            <input id="productId" class="form-control mb-2" placeholder="Product ID" />
+            <input id="quantity" class="form-control mb-3" placeholder="Quantity" type="number" />
+            <div class="d-flex gap-2">
+                <button class="btn btn-secondary flex-grow-1" onclick="window.closeModal()">Cancel</button>
+                <button class="btn btn-primary flex-grow-1" onclick="window.saveOrder()">Save</button>
+            </div>
+        </div>
+    </div>
+

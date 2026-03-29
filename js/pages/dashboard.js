@@ -5,6 +5,7 @@ import { initModal, openModal, closeModal } from "../components/modal.js";
 import { ActivityService } from "../../services/activityLogService.js";
 import { initProductPage } from "../../services/productService.js";
 import { initReportPage } from "../../services/reportService.js";
+import { loadOrderWindow } from "./orders.js";
 // Selectors
 const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -477,6 +478,10 @@ function checkItems() {
     else if (item.classList.contains("report")) {
       clearCategoryDropdown();
       loadReportsPage();
+    }
+    else if (item.classList.contains("orders")) {
+      clearCategoryDropdown();
+      loadOrderWindow();
     }
   });
 

@@ -7,7 +7,7 @@ const dashboard = document.querySelector(".dashboard");
 const users = document.querySelector(".users");
 const report = document.querySelector(".report");
 const logs = document.querySelector(".activities");
-const search = document.querySelector(".search");
+// const search = document.querySelector(".search");
 const sidebarItems = document.querySelectorAll(".sidebar-item span");
 let deleteUsers = null; // will be updated later inside a function after rendering it 
 let editUsers = null;
@@ -88,10 +88,11 @@ function setUpSearch(value) {
   };
 }// this function take value and filter the data based on it 
 function searchUsers() {
+  const search = document.querySelector('input[placeholder*="Search"]');
+  if (!search) return;
   search.addEventListener("input", (e) => {
     const searchValue = e.target.value.trim();
     const filtered = setUpSearch(searchValue);
-    console.log(filtered);
     renderUsers(filtered);
   });
 }// used to get the input user in search and pass it to SetUpSearch function

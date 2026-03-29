@@ -3,7 +3,7 @@ import { AuthService } from "../../services/authService.js";
 import { UserService } from "../../services/userService.js";
 
 // Selectors
-const search = document.querySelector(".search");
+
 let deleteUsers = null; // will be updated later inside a function after rendering it 
 let tbody = null;
 
@@ -61,10 +61,11 @@ function setUpSearch(value) {
   };
 }// this function take value and filter the data based on it 
 function searchLogs() {
+  const search = document.querySelector('input[placeholder*="Search"]');
+  if (!search) return;
   search.addEventListener("input", (e) => {
     const searchValue = e.target.value.trim();
     const filtered = setUpSearch(searchValue);
-    console.log(filtered);
     renderLogs(filtered);
   });
 }// used to get the input user in search and pass it to SetUpSearch function

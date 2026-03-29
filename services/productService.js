@@ -1,5 +1,6 @@
 import { add_Product_API, adjsment_stock, adjustment_API, categoryName, product, Product_API } from "../services/fetch.js"
-
+import { AuthService } from "../../services/authService.js";
+import { ActivityService } from "../../services/activityLogService.js";
 export function initProductPage() {
 
     let _name = document.getElementById("name")
@@ -80,12 +81,17 @@ export function initProductPage() {
 
     add.addEventListener("click", async (e) => {
         e.preventDefault()
-
-
-
-        add_Product_API(_name, category, supplier, stock, recorded, sku, image)
-
-
+        if (_name.value == "" || category.value == "" || supplier.value == "", stock.value == "", recorded.value == "", sku.value == "" || image.value == "") {
+            alert("you must enter product details")
+        } else {
+            add_Product_API(_name, category, supplier, stock, recorded, sku, image);
+            await ActivityService.createActivity({
+                action: "Product Added",
+                entity: "products",
+                userId: AuthService.getCurrentUser().id,
+                date: new Date().toISOString().split("T")[0]
+            });
+        }
     })
 
     function edit_Product() {
@@ -134,6 +140,12 @@ export function initProductPage() {
                 image: Update_image.value,
             })
         })
+        await ActivityService.createActivity({
+            action: "Product Updated",
+            entity: "products",
+            userId: AuthService.getCurrentUser().id,
+            date: new Date().toISOString().split("T")[0]
+        });
         const data = await response.json()
         alert("updated successfully")
     })
@@ -166,7 +178,13 @@ export function initProductPage() {
                 const res = await fetch(`http://localhost:3000/product/${id}`, {
                     method: "DELETE"
                 })
-                const data = await res.json()
+                const data = await res.json();
+                await ActivityService.createActivity({
+                    action: "Product Deleted",
+                    entity: "products",
+                    userId: AuthService.getCurrentUser().id,
+                    date: new Date().toISOString().split("T")[0]
+                });
                 alert("The Product Deleted successfully")
 
             })
@@ -287,22 +305,25 @@ export function initProductPage() {
         e.preventDefault()
         console.log(amount.value);
 
-        product_data.forEach((item) => {
-            let result = +item.stock - +amount.value
-            console.log(result);
+        if (Adjasment_Name.value == "" || Adjasment_quantity.value == "" || Adjasment_category.value == "" || action.value == "" || reason.value == "") {
+            alert("please enter the data")
+        } else {
+            product_data.forEach((item) => {
+                let result = +item.stock - +amount.value
+                console.log(result);
 
-        })
-        const res = await fetch(`${Product_API}/${adj_BTN.dataset.id}`, {
-            method: "PATCH",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                stock: amount.value
             })
+            const res = await fetch(`${Product_API}/${adj_BTN.dataset.id}`, {
+                method: "PATCH",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    stock: amount.value
+                })
 
-        })
-        const data = await res.json()
-        Add_adjustment()
-
+            })
+            const data = await res.json()
+            Add_adjustment()
+        }
 
 
     })

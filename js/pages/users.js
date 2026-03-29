@@ -130,7 +130,7 @@ function setupAddUser() {
     const errorDiv = modal.querySelector("#form-error");
 
     submitBtn.onclick = async () => {
-      errorDiv.textContent = ""; // reset
+      errorDiv.textContent = "";
 
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -142,6 +142,12 @@ function setupAddUser() {
 
       try {
         const newUser = await UserService.createUser(userData);
+        await ActivityService.createActivity({
+          action: "User Added",
+          entity: "users",
+          userId: AuthService.getCurrentUser().id,
+          date: new Date().toISOString().split("T")[0]
+        });
         allUsers.push(newUser);
         renderUsers(allUsers);
         setupCards();
@@ -220,6 +226,12 @@ function setupDeleteUser() {
     try {
       await UserService.deleteUser(userId);
       allUsers = allUsers.filter(u => u.id != userId);
+      await ActivityService.createActivity({
+        action: "User Deleted",
+        entity: "users",
+        userId: AuthService.getCurrentUser().id,
+        date: new Date().toISOString().split("T")[0]
+      });
       renderUsers(allUsers);
       setupCards();
     } catch (err) {

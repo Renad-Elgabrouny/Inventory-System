@@ -1,0 +1,30 @@
+[33m6ab91c9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m)[m fixing login issue,adding activity logs to all events
+[33m4d726a4[m creating the dashboard ui and DOM
+[33m539c828[m Merge branch 'dev' of https://github.com/Renad-Elgabrouny/Inventory-System into dev
+[33m265c3a1[m ui of dashboard
+[33m8163612[m update dev branch with new changes
+[33meb6a150[m Merge branch 'renad' into dev
+[33mf7341da[m add data to logJson
+[33md781647[m[33m ([m[1;31morigin/renad[m[33m, [m[1;32mrenad[m[33m)[m adding the activity logs UI and its Dom & integrating them into system
+[33mbc60b5c[m adding icons to the navbar
+[33m9b127c5[m fixing scoping error in user page
+[33mb822d4b[m improving navbar interacting with items inside it
+[33m3dbd37c[m Merge branch 'dev' of https://github.com/Renad-Elgabrouny/Inventory-System into dev
+[33mb08889e[m making index page render the user table in its page (dynamic loading)
+[33me28ee10[m updating table responsive
+[33mae50d1c[m modifying modal.js making supplier in navbar clickable
+[33mff54bba[m Merge remote-tracking branch 'origin/dev' into renad
+[33m33a58d3[m adding the ui for users with its DOM & connectthe flow together (register-login-user page,implementing the modal component)
+[33m18c5951[m updating .gitignore file
+[33m2c54d2d[m updating .gitignore file
+[33mbbe6edb[m i added jquery file and added code to every supplier service
+[33me41cd07[m add  DOM for login and register , adding the final file structure , handling more validations
+[33m092387f[m add  DOM for login and register , adding the final file structure , handling more validations
+[33m577aadb[m implement activity log model/services and the ui for register/login pages
+[33m332a9db[m test user services and error handlers work well
+[33m13a995a[m add user & auth services
+[33m2dd05df[m build user model with validating its attributes
+[33m38773ea[m build user model with validating its attributes
+[33m9d17b4d[m[33m ([m[1;31morigin/karim[m[33m, [m[1;32mmain[m[33m)[m init: project structure
+[33m69bb080[m init: project structure
+[33m9f92405[m Initial commit

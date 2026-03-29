@@ -1,0 +1,151 @@
+
+    <link rel="stylesheet" href="../assets/css/product.css">
+
+    <h1 class="mainTitle"><u>Products</u></h1>
+    <div class="headTitle">
+        <input type="search"  id="search" placeholder="Product Search">
+        <div class="subTitle">
+        <button type="button" class="addProduct">Add Product</button>
+    <button type="button" class="adjsment">Stock Adjasment</button>
+    </div>
+    </div>
+    
+    <form class="form">
+    <button type="button" class="clouse">close</button>
+
+    <div>
+        <label for="name">Product Name</label>
+        <input type="text" id="name">
+    </div>
+
+    <div>
+        <label for="category"> category</label>
+        <select name="category" id="category">
+            
+        </select>
+    </div>
+
+    <div>
+        <label for="supplier"> supplier</label>
+        <input type="text" id="supplier">
+    </div>
+
+    <div>
+        <label for="stock">َQuantity</label>
+        <input type="text" id="stock">
+    </div>
+    <div>
+        <label for="stock">Recorded level</label>
+        <input type="text" id="recorded">
+    </div>
+
+    <div>
+        <label for="sku">sku code</label>
+        <input type="text" id="sku">
+    </div>
+    <div>
+        <label for="price">price </label>
+        <input type="text" id="price">
+    </div>
+
+    <div>
+        <label for="image">Product image</label>
+        <input type="url" id="image">
+    </div>
+
+    <button type="button" id="add">add</button>
+</form>
+
+    
+    <form class="Edit_form">
+    <button type="button" class="Editeclouse">close</button>
+
+    <div>
+        <label for="Update_name">Product Name</label>
+        <input type="text" id="Update_name">
+    </div>
+
+    <div>
+        <label for="Update_category"> category</label>
+        <input type="text" id="Update_category">
+    </div>
+
+    <div>
+        <label for="Update_supplier"> supplier</label>
+        <input type="text" id="Update_supplier">
+    </div>
+    <div>
+        <label for="update_Recorded">Recorded level</label>
+        <input type="text" id="update_Recorded">
+    </div>
+
+    <div>
+        <label for="Update_sku">sku code</label>
+        <input type="text" id="Update_sku">
+    </div>
+    <div>
+        <label for="Update_price">price </label>
+        <input type="text" id="Update_price">
+    </div>
+
+    <div>
+        <label for="Update_image">Product image</label>
+        <input type="url" id="Update_image">
+    </div>
+
+    <button type="button" id="update">Update</button>
+</form> 
+
+
+<form id="adjsmentForm">
+    <button type="button" class="adjClouse">close</button>
+    
+    <div>
+        <label for="Adjasment_Name"> product name</label>
+        <select  id="Adjasment_Name"></select>
+    </div>
+
+    <div>
+        <label for="Adjasment_category"> category</label>
+        <input type="text" id="Adjasment_category">
+    </div>
+    <div>
+        <label for="Adjasment_quantity"> Quantity</label>
+        <input type="text" id="Adjasment_quantity">
+    </div>
+    <div>
+        
+        <select  id="action">
+            <option class="options" value="">select The action</option>
+            <option class="options" value="increase">increase</option>
+            <option class="options" value="decrease">decrease</option>
+        </select>
+    </div>
+    <div class="container">
+    </div>
+    <input id="amount" type="text" >
+
+    <div>
+        <label for="reason"> reason</label>
+        <input type="text" id="reason">
+    </div>
+    <button type="button" id="adj_BTN">adjsment</button>
+</form>
+
+    <div class="showProducts">
+         <table class="product-table">
+        <tr class="head">
+            <th>image</th>
+            <th>name</th>
+            <th>category</th>
+            <th>supplier</th>
+            <th>Quantity</th>
+            <th>Reorder Level</th>
+            <th>sku code</th>
+            <th>price</th>
+            <th>Actions</th>
+        </tr>
+        <tbody class="body"> </tbody>
+    </table>
+    </div>
+

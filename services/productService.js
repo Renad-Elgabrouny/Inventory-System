@@ -10,6 +10,7 @@ export function initProductPage() {
     let recorded = document.getElementById("recorded")
     let update_Recorded = document.getElementById("update_Recorded")
     let sku = document.getElementById("sku")
+    let price = document.getElementById("price")
     let image = document.getElementById("image")
     let add = document.getElementById("add")
     let body = document.querySelector(".body")
@@ -23,6 +24,7 @@ export function initProductPage() {
     let Update_category = document.getElementById("Update_category")
     let Update_supplier = document.getElementById("Update_supplier")
     let Update_sku = document.getElementById("Update_sku")
+    let Update_price = document.getElementById("Update_price")
     let Update_image = document.getElementById("Update_image")
     let update = document.getElementById("update")
     let search = document.getElementById("search")
@@ -50,6 +52,7 @@ export function initProductPage() {
     <td><div class="level"></div><span class="value">${value.stock}</span></td>
     <td>${value.Reorder_Level}</td>
     <td>${value.sku}</td>
+    <td>${value.price}</td>
     <td><button data-id="${value.id}"  class="edit">✎</button> <button data-id="${value.id}" class="delete">🗑</button></td>
     </tr>
     `
@@ -81,10 +84,11 @@ export function initProductPage() {
 
     add.addEventListener("click", async (e) => {
         e.preventDefault()
-        if (_name.value == "" || category.value == "" || supplier.value == "", stock.value == "", recorded.value == "", sku.value == "" || image.value == "") {
+        if (_name.value == "" || category.value == "" || supplier.value == "", stock.value == "",
+            recorded.value == "", sku.value == "" || image.value == "", price.value == "") {
             alert("you must enter product details")
         } else {
-            add_Product_API(_name, category, supplier, stock, recorded, sku, image);
+            add_Product_API(_name, category, supplier, stock, recorded, sku, price, image);
             await ActivityService.createActivity({
                 action: "Product Added",
                 entity: "products",
@@ -109,6 +113,7 @@ export function initProductPage() {
                         Update_name.value = item.name
                         Update_category.value = item.category
                         Update_sku.value = item.sku
+                        Update_price.value = item.price
                         Update_supplier.value = item.supplier
                         update_Recorded.value = item.Reorder_Level
                         Update_image.value = item.image
@@ -135,6 +140,7 @@ export function initProductPage() {
                 name: Update_name.value,
                 category: Update_category.value,
                 sku: Update_sku.value,
+                price: Update_price.value,
                 supplier: Update_supplier.value,
                 Reorder_Level: update_Recorded.value,
                 image: Update_image.value,
@@ -186,6 +192,12 @@ export function initProductPage() {
                     date: new Date().toISOString().split("T")[0]
                 });
                 alert("The Product Deleted successfully")
+                await ActivityService.createActivity({
+                    action: "Product delete",
+                    entity: "products",
+                    userId: AuthService.getCurrentUser().id,
+                    date: new Date().toISOString().split("T")[0]
+                });
 
             })
         })
@@ -323,6 +335,12 @@ export function initProductPage() {
             })
             const data = await res.json()
             Add_adjustment()
+            await ActivityService.createActivity({
+                action: "Product Adjustment",
+                entity: "products",
+                userId: AuthService.getCurrentUser().id,
+                date: new Date().toISOString().split("T")[0]
+            });
         }
 
 

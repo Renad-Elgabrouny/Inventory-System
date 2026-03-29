@@ -162,7 +162,7 @@ async function loadProductsPage() {
     const html = await res.text();
     document.querySelector(".contentArea").innerHTML = html;
 
-    // Call the initialization for the products page
+
     if (typeof initProductPage === "function") {
       initProductPage();
     }
@@ -383,7 +383,7 @@ async function openAdjustStockModal() {
     } else {
       row.style.display = "none";
     }
-    // clear amount when action changes
+
     modalEl.querySelector("#adj-amount").value = "";
   });
 
@@ -472,7 +472,7 @@ function checkItems() {
     else if (item.classList.contains("activities")) { clearCategoryDropdown(); loadLogWindow(); }
     else if (item.classList.contains("products")) {
       clearCategoryDropdown();
-      loadProductsPage();  // initProductPage is called inside this
+      loadProductsPage();
     }
     else if (item.classList.contains("dashboard")) { restoreDashboard(); }
     else if (item.classList.contains("report")) {

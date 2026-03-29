@@ -5,26 +5,26 @@ import { ActivityService } from "../../services/activityLogService.js";
 let allOrders = [];
 let editingOrderId = null;
 
-// ─── Render the HTML shell into .contentArea ───────────────────────────────
+
 async function renderAreaContent() {
   const res = await fetch("../../pages/orders.html");
   const html = await res.text();
   document.querySelector(".contentArea").innerHTML = html;
 }
 
-// ─── Main initializer (mirrors loadUserWindow) ─────────────────────────────
+
 export async function loadOrderWindow() {
   try {
-    await renderAreaContent(); // 1️⃣ inject HTML
-    bindGlobalActions();       // 2️⃣ register window.* globals RIGHT after HTML exists ← move this up
-    await loadData();          // 3️⃣ fetch & render data
-    setupFilters();            // 4️⃣ wire filters
+    await renderAreaContent();
+    bindGlobalActions();
+    await loadData();
+    setupFilters();
   } catch (err) {
     console.error(err);
   }
 }
 
-// ─── Everything below is unchanged ────────────────────────────────────────
+
 
 export async function initOrders() {
   await loadData();
@@ -111,7 +111,7 @@ function populateSupplierFilter() {
   if (selects.length < 2) return;
   const supplierSelect = selects[1];
   const uniqueSuppliers = [
-    ...new Set(allOrders.map((o) => o.supplierName).filter(Boolean)) // ← add .filter(Boolean)
+    ...new Set(allOrders.map((o) => o.supplierName).filter(Boolean))
   ];
 
   supplierSelect.innerHTML =

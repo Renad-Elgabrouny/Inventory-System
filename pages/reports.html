@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="../assets/css/report.css" />
+<div
+  class="container d-flex flex-column my-1 p-4 gap-3"
+  style="background-color: rgba(248, 250, 252, 1)"
+>
+  <div
+    class="header d-flex flex-row justify-content-between align-items-center"
+  >
+    <div class="left d-flex flex-column">
+      <h1>Inventory Reports</h1>
+      <p>view detailed analytics and stock status</p>
+    </div>
+    <div class="right">
+      <form action="" class="d-flex flex-row gap-2">
+        <input
+          type="search"
+          name="search"
+          id="search"
+          placeholder="Search Reports"
+          style="
+            background-color: rgba(248, 250, 252, 1);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 15px;
+          "
+        />
+        <input
+          type="button"
+          value="Export pdf"
+          style="
+            background-color: rgba(37, 99, 235, 1);
+            color: white;
+            padding: 5px;
+            border-radius: 10px;
+            border: none;
+          "
+        />
+      </form>
+    </div>
+  </div>
+  <div class="one d-flex flex-row justify-content-evenly align-items-center">
+    <div class="box1 d-flex flex-column">
+      <div
+        class="top d-flex flex-row justify-content-between align-items-center"
+      >
+        <div class="left">🈸</div>
+        <div
+          class="right"
+          style="
+            color: rgba(5, 150, 105, 1);
+            background-color: rgba(5, 150, 105, 0.2);
+            padding: 2px;
+            border-radius: 5px;
+          "
+        >
+          +2.4%
+        </div>
+      </div>
+      <div class="two" style="font-size: 14px; color: rgba(100, 116, 139, 1)">
+        Total Inventory Value
+      </div>
+      <div class="three"><p style="font-weight: bold">$248,500,00</p></div>
+    </div>
+    <div class="box2 d-flex flex-column">
+      <div
+        class="top d-flex flex-row justify-content-between align-items-center gap-5"
+      >
+        <div class="left">🈸</div>
+        <div
+          class="right"
+          style="
+            color: rgba(100, 116, 139, 1);
+            background-color: rgba(100, 116, 139, 0.2);
+            padding: 2px;
+            border-radius: 5px;
+          "
+        >
+          Updated 1h ago
+        </div>
+      </div>
+      <div class="two" style="font-size: 14px; color: rgba(100, 116, 139, 1)">
+        Total Products
+      </div>
+      <div class="three"><p style="font-weight: bold">1,284</p></div>
+    </div>
+    <div class="box3 d-flex flex-column">
+      <div
+        class="top d-flex flex-row justify-content-between align-items-center gap-5"
+      >
+        <div class="left">🈸</div>
+        <div
+          class="right"
+          style="
+            color: rgba(220, 38, 38, 1);
+            background-color: rgba(220, 38, 38, 0.2);
+            padding: 2px;
+            border-radius: 5px;
+          "
+        >
+          Requires Attention
+        </div>
+      </div>
+      <div class="two" style="font-size: 14px; color: rgba(100, 116, 139, 1)">
+        Low Stock Count
+      </div>
+      <div class="three">
+        <p style="font-weight: bold; color: rgba(220, 38, 38, 1)">18</p>
+      </div>
+    </div>
+  </div>
+  <div class="two d-flex flex-column">
+    <div class="one d-flex flex-row justify-content-between align-items-center">
+      <div class="left"><p class="fw-bold">Low Stock Report</p></div>
+      <div class="right">
+        <p style="font-size: 16px; color: rgba(37, 99, 235, 1)">Reorder All</p>
+      </div>
+    </div>
+    <div class="two">
+      <table class="lowProducts">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Current Quantity</th>
+            <th>Reorder Level</th>
+            <th>Supplier</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <div class="three d-flex flex-column">
+    <div class="one">
+      <p style="font-weight: bold">Inventory Value Report</p>
+    </div>
+    <div class="two">
+      <table class="tableTwo">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Quantity ON Hand</th>
+            <th>Unit Price</th>
+            <th>Total Value</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div
+      class="three d-flex flex-row justify-content-between align-items-center"
+    >
+      <div class="left">
+        <p style="font-weight: bold">Grand Total (Full Inventory)</p>
+      </div>
+      <div class="total">
+        <p style="font-weight: bold; color: rgba(37, 99, 235, 1)">
+          $248.500.00
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,241 @@
+
+body{
+    position: relative;
+}
+.product-table {
+    margin: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.product-table .head {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+.product-table th,
+.product-table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+#edit{
+    margin-right: 5px;
+}
+
+.form , .Edit_form , #adjsmentForm{
+    position: absolute;
+    position: relative;
+    background-color: white;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    padding: 20px;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 20px;
+}
+
+.form  label{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+.Edit_form label{
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+.form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+select{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+ .Edit_form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#add,#update{
+    grid-column: 1 / 4;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: blueviolet;
+    color: white;
+    font-size: 16px;
+}
+
+.clouse,.Editeclouse,.adjClouse{
+  position: absolute;
+  top: 0;
+  right:0;
+  background-color: red;
+  border-radius: 10px;
+}
+
+.level{
+    display: inline-block;
+    margin-right: 2px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+
+}
+.value{
+    font-weight: bolder;
+    font-size: larger;
+}
+.pro_name{
+    cursor: pointer;
+}
+.headTitle{
+    display: flex;
+    justify-content: space-between;
+}
+#search{
+    padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(239, 237, 237, 0.793);
+}
+.mainTitle{
+    text-align: center;
+    margin-bottom: 8px;
+}
+.addProduct{
+    padding: 12px;
+    border-radius: 15px;
+    background-color: mediumorchid;
+    color: white;
+}
+.adjsment{
+    padding: 12px;
+    border-radius: 15px;
+    background-color: mediumorchid;
+    color: white;
+}
+
+#adjsmentForm{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1100px, 92%);
+  background: #efefef;
+  border-radius: 8px;
+  padding: 28px 30px 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.18);
+  z-index: 1001;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 18px 22px;
+}
+
+#adjsmentForm > div,
+#adjsmentForm > input{
+  width: 100%;
+}
+#adj_BTN{
+    width: 100%;
+}
+
+#adjsmentForm label{
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #222;
+}
+
+#adjsmentForm input,
+#adjsmentForm select{
+  width: 100%;
+  height: 52px;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 15px;
+  outline: none;
+  background: #fff;
+}
+
+#adjsmentForm input:focus,
+#adjsmentForm select:focus{
+  border-color: #8a2be2;
+}
+
+
+
+.container{
+  display: flex;
+  align-items: end;
+}
+
+.container label{
+  margin: 0;
+}
+
+#amount{
+  align-self: end;
+}
+
+#adj_BTN{
+  grid-column: 1 / -1;
+  height: 54px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #7b2be2, #9b30ff);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.container{
+  grid-column: 2 / 3;
+  display: block;
+  align-self: end;
+}
+
+.container label{
+  display: block;
+  margin-bottom: 8px;
+}
+
+#amount{
+  grid-column: 2 / 3;
+  width: 100%;
+}
+
+
+
+/* @media (max-width: 900px){
+  #adjsmentForm{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px){
+  #adjsmentForm{
+    grid-template-columns: 1fr;
+    padding: 22px 18px 16px;
+  }
+} */

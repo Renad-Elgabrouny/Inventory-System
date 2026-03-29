@@ -1,34 +1,485 @@
 {
-  "products": [
+  "product": [
     {
-      "id": 1,
-      "name": "Mouse",
-      "sku": "MOU123",
-      "price": 10,
-      "quantity": 50,
-      "reorderLevel": 10,
-      "categoryId": 1,
-      "supplierId": 1
+      "id": "1",
+      "name": "laptopssss",
+      "category": "electronic",
+      "supplier": "karim yasser",
+      "stock": "50",
+      "Reorder_Level": "100",
+      "sku": "lop",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiQrqGNNTR7xwgo2dIb0enMOFgw_5N3X26dA&s"
     },
     {
-      "id": 2,
-      "name": "Keyboard",
-      "sku": "KEY456",
-      "price": 25,
-      "quantity": 30,
-      "reorderLevel": 8,
-      "categoryId": 1,
-      "supplierId": 1
+      "id": "2",
+      "name": "samsung",
+      "category": "mobile",
+      "supplier": "mazenss",
+      "stock": "100",
+      "Reorder_Level": "100",
+      "sku": "SVM",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKIrGQpl5ALXEbmK8LLPt1Ov8Pe1v4IXtDUw&s"
     },
     {
-      "id": 3,
-      "name": "Monitor",
-      "sku": "MON789",
-      "price": 150,
-      "quantity": 5,
-      "reorderLevel": 6,
-      "categoryId": 2,
-      "supplierId": 2
+      "id": "3",
+      "name": "notebook",
+      "category": "stationery",
+      "supplier": "cairo supplies",
+      "stock": "50",
+      "Reorder_Level": "100",
+      "sku": "sta001",
+      "image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66"
+    },
+    {
+      "id": "4",
+      "name": "coffee maker",
+      "category": "appliances",
+      "supplier": "home tech",
+      "stock": "80",
+      "Reorder_Level": "100",
+      "sku": "app001",
+      "image": "https://images.unsplash.com/photo-1511920170033-f8396924c348"
+    },
+    {
+      "id": "5",
+      "name": "t-shirt",
+      "category": "clothing",
+      "supplier": "fashion point",
+      "stock": "300",
+      "Reorder_Level": "100",
+      "sku": "clo001",
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
+    },
+    {
+      "id": "6",
+      "name": "rice",
+      "category": "grocery",
+      "supplier": "green market",
+      "stock": "1000",
+      "Reorder_Level": "100",
+      "sku": "gro001",
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c"
+    },
+    {
+      "id": "7",
+      "name": "shampoo",
+      "category": "beauty",
+      "supplier": "care plus",
+      "stock": "250",
+      "Reorder_Level": "100",
+      "sku": "bea001",
+      "image": "https://images.unsplash.com/photo-1526947425960-945c6e72858f"
+    },
+    {
+      "id": "8",
+      "name": "football",
+      "category": "sports",
+      "supplier": "active zone",
+      "stock": "120",
+      "Reorder_Level": "100",
+      "sku": "spo001",
+      "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b"
+    },
+    {
+      "id": "9",
+      "name": "toy car",
+      "category": "toys",
+      "supplier": "kids world",
+      "stock": "100",
+      "Reorder_Level": "100",
+      "sku": "toy001",
+      "image": "https://images.unsplash.com/photo-1517672651691-24622a91b550"
+    },
+    {
+      "id": "10",
+      "name": "Bags",
+      "category": "asdas",
+      "supplier": "modooos",
+      "stock": "3000",
+      "Reorder_Level": "100",
+      "sku": "BB",
+      "image": "data:image/jpeg;base64,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"
+    },
+    {
+      "id": "7321",
+      "name": "iphone",
+      "category": "electronic",
+      "supplier": "s",
+      "stock": "200",
+      "Reorder_Level": "50",
+      "sku": "apple",
+      "image": ""
+    },
+    {
+      "id": "a711",
+      "name": "mobilesss",
+      "category": "electronic",
+      "supplier": "karim yasser",
+      "stock": "200",
+      "Reorder_Level": "150",
+      "sku": "MOB",
+      "image": "data:image/jpeg;base64,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"
+    },
+    {
+      "id": "de5e",
+      "name": "test",
+      "category": "test",
+      "supplier": "tester",
+      "stock": "4",
+      "Reorder_Level": "2",
+      "sku": "tt",
+      "image": ""
     }
-  ]
+  ],
+  "adjustment": [
+    {
+      "id": "36c1",
+      "product_Name": "lop",
+      "type": "decrease",
+      "quantity": 10,
+      "reason": "damage",
+      "old_Quantity": "20",
+      "New_Quantity": "10"
+    },
+    {
+      "id": "89b1",
+      "product_Name": "lop",
+      "type": "decrease",
+      "quantity": 2,
+      "reason": "damage",
+      "old_Quantity": "10",
+      "New_Quantity": "8"
+    },
+    {
+      "id": "3189",
+      "product_Name": "lop",
+      "type": "increase",
+      "quantity": 20,
+      "reason": "",
+      "old_Quantity": "150",
+      "New_Quantity": "170"
+    },
+    {
+      "id": "4ae2",
+      "product_Name": "lop",
+      "type": "increase",
+      "quantity": 30,
+      "reason": "",
+      "old_Quantity": "170",
+      "New_Quantity": "200"
+    },
+    {
+      "id": "9026",
+      "product_Name": "lop",
+      "type": "increase",
+      "quantity": "50",
+      "reason": "",
+      "old_Quantity": "150",
+      "New_Quantity": "200"
+    },
+    {
+      "id": "d2c0",
+      "product_Name": "lop",
+      "type": "decrease",
+      "quantity": "150",
+      "reason": "damage",
+      "old_Quantity": "200",
+      "New_Quantity": "50"
+    },
+    {
+      "id": "96c6",
+      "product_Name": "tt",
+      "type": "decrease",
+      "quantity": "4",
+      "reason": "damage",
+      "old_Quantity": "8",
+      "New_Quantity": "4"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Computer Accessories",
+      "description": [
+        "Mice",
+        "keyboards",
+        "peripherals"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Displays",
+      "description": [
+        "Monitors",
+        "screens"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Games",
+      "description": [
+        "playstation",
+        "xbooks"
+      ]
+    }
+  ],
+  "activityLogs": [
+    {
+      "id": "2",
+      "action": "Product Created",
+      "entity": "product",
+      "userId": "a370",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "3",
+      "action": "Product Created",
+      "entity": "product",
+      "userId": "e7ea",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "4",
+      "action": "Product Created",
+      "entity": "product",
+      "userId": "89cf",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "5",
+      "action": "Product Created",
+      "entity": "product",
+      "userId": "c93f",
+      "date": "2026-03-15"
+    },
+    {
+      "id": "3dde",
+      "action": "User Updated",
+      "entity": "users",
+      "userId": "e7ea",
+      "date": "2026-03-28"
+    }
+  ],
+  "users": [
+    {
+      "id": "2",
+      "name": "Staff User",
+      "email": "staff@inventory.com",
+      "password": "staff123",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "Renad Khaled",
+      "email": "renad@admin.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "4",
+      "name": "Roaa Fouda",
+      "email": "roaa@admin.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "name": "renadddd",
+      "email": "renad@gmail.com",
+      "password": "12345R24",
+      "role": "user",
+      "id": "89cf"
+    },
+    {
+      "name": "masa",
+      "email": "masa@gmail.com",
+      "password": "1029384576M",
+      "role": "admin",
+      "id": "e7ea"
+    },
+    {
+      "id": "c93f",
+      "name": "renaddd",
+      "email": "enad@test.com",
+      "password": "1234567R",
+      "role": "user"
+    },
+    {
+      "name": "Khaled Ahmed",
+      "email": "khaled@gmail.com",
+      "password": "K12345678",
+      "role": "admin",
+      "id": "a370"
+    },
+    {
+      "id": "48d2",
+      "name": "Renad Khaled",
+      "email": "renadkhaled@gmail.com",
+      "password": "R12345",
+      "role": "user"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "supplierId": 1,
+      "productId": 1,
+      "quantity": 50,
+      "status": "pending",
+      "date": "2026-03-13"
+    },
+    {
+      "id": "2",
+      "supplierId": 2,
+      "productId": 3,
+      "quantity": 10,
+      "status": "received",
+      "date": "2026-03-10"
+    }
+  ],
+  "suppliers": [
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "867c"
+    },
+    {
+      "ssc": "102030",
+      "name": "mohamed ahmed",
+      "phone": "0111111111",
+      "email": "mohamed@gmail.com",
+      "address": {
+        "continent": "africa",
+        "country": "egypt",
+        "city": "cairo",
+        "street": "street one"
+      },
+      "id": "d2a5"
+    },
+    {
+      "id": "5845",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "662d",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "85b9",
+      "ssc": "1111111",
+      "name": "without e",
+      "phone": "01062765839",
+      "email": "nnnnnnnnnnn",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "Cairo",
+        "street": "One"
+      }
+    },
+    {
+      "id": "9e93",
+      "ssc": "3333333",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "4bd1",
+      "ssc": "5555555",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "30ec",
+      "ssc": "6666666666",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "37e7",
+      "ssc": "5555555",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "europ",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "4710",
+      "ssc": "9999999",
+      "name": "nadaa",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "1010101",
+      "name": "sameh",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "australia",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      },
+      "id": "8e43"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

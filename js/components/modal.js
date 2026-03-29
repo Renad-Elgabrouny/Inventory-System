@@ -1,3 +1,4 @@
+import { initProductPage } from "../../services/productService.js";
 let modalInstance;
 
 export const initModal = async () => {
@@ -337,3 +338,25 @@ $(document).on("click", ".supplier", function () {
     });
 });
 
+
+
+
+const productItem = document.querySelector(".products");
+
+productItem.addEventListener("click", async function () {
+    document.querySelectorAll(".menu > div").forEach(item => {
+        item.classList.remove("active-item");
+    });
+
+    productItem.classList.add("active-item");
+
+    try {
+        const res = await fetch("./pages/products.html");
+        const html = await res.text();
+        document.querySelector(".contentArea").innerHTML = html;
+        // const module = await import("../../services/productService.js");
+        initProductPage();
+    } catch (error) {
+        console.error("Error loading product page:", error);
+    }
+});

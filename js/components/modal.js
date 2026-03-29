@@ -354,8 +354,33 @@ productItem.addEventListener("click", async function () {
         const res = await fetch("./pages/products.html");
         const html = await res.text();
         document.querySelector(".contentArea").innerHTML = html;
-        // const module = await import("../../services/productService.js");
+        const module = await import("../../services/productService.js");
         initProductPage();
+    } catch (error) {
+        console.error("Error loading product page:", error);
+    }
+});
+
+
+const report = document.querySelector(".report");
+
+report.addEventListener("click", async function () {
+    document.querySelectorAll(".menu > div").forEach(item => {
+        item.classList.remove("active-item");
+    });
+
+    report.classList.add("active-item");
+
+    try {
+        const res = await fetch("./pages/reports.html");
+        const html = await res.text();
+        document.querySelector(".contentArea").innerHTML = html;
+        // const module = await import("../../services/reportService.js");
+        // initProductPage();
+        const script = document.createElement("script");
+        script.src = "../services/reportService.js";
+        // script.type = "module"; // optional
+        document.body.appendChild(script);
     } catch (error) {
         console.error("Error loading product page:", error);
     }

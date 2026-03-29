@@ -269,6 +269,13 @@
       "role": "user"
     },
     {
+      "id": "10",
+      "name": "Fatma",
+      "email": "fatma@fatma.com",
+      "password": "12345678",
+      "role": "admin"
+    },
+    {
       "id": "3",
       "name": "Renad Khaled",
       "email": "renad@admin.com",

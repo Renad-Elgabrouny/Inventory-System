@@ -14,6 +14,7 @@ async function loadData() {
   allOrders = await OrderService.getall();
   renderTable(allOrders);
   populateSupplierFilter();
+  setupSidebarNavigation();
 }
 
 async function renderTable(orders) {
@@ -97,6 +98,19 @@ function populateSupplierFilter() {
       .join("");
 }
 
+function setupSidebarNavigation() {
+    const menu = document.querySelector(".nav.flex-column");
+    
+    if (!menu) return;
+    menu.addEventListener("click", function (e) {
+        const item = e.target.closest(".sidebar-item, .supplier");
+        if (!item) return;
+        if (item.classList.contains("active-item") || item.classList.contains("orders")) {
+            return;
+        }
+        window.location.href = "../index.html";
+    });
+  }
 
 export function bindGlobalActions() {
   window.saveOrder = async function () {

@@ -2,13 +2,17 @@ import { AuthService } from "../../services/authService.js";
 import { loadUserWindow } from "./users.js";
 import { loadLogWindow } from "./activityLog.js";
 import { initModal, openModal, closeModal } from "../components/modal.js";
-
+import { ActivityService } from "../../services/activityLogService.js";
+import { initProductPage } from "../../services/productService.js";
+import { initReportPage } from "../../services/reportService.js";
+import { loadOrderWindow } from "./orders.js";
 // Selectors
 const menu = document.querySelector(".menu");
 const sidebarItems = document.querySelectorAll(".sidebar-item");
 const profile = document.querySelector(".user-profile");
 const usersItem = document.querySelector(".users");
 const supplierItem = document.querySelector(".supplier");
+let dashboardHTML = "";
 
 // APIs
 const Product_API = "http://localhost:3000/product";
@@ -43,23 +47,43 @@ async function loadCategoryDropdown() {
   }
 }
 
+
+async function loadReportsPage() {
+  try {
+    const res = await fetch("../../pages/reports.html");
+    const html = await res.text();
+    document.querySelector(".contentArea").innerHTML = html;
+    if (typeof initReportPage === "function") initReportPage();
+  } catch (err) {
+    console.error("Failed to load reports page:", err);
+  }
+}
+
 function clearCategoryDropdown() {
   const dropdownMenu = document.querySelector(".dropdown-menu");
   if (dropdownMenu) dropdownMenu.innerHTML = `<li><a class="dropdown-item" href="#">All</a></li>`;
 }
 
 function renderCardsData(allProducts, allSuppliers) {
-  document.querySelector(".total-products h5").textContent = allProducts.length.toLocaleString();
-  document.querySelector(".total-suppliers h5").textContent = allSuppliers.length;
-  const lowStockItems = allProducts.filter((p) => +p.stock < +p.Reorder_Level);
-  document.querySelector(".low-stock-items h5").textContent = lowStockItems.length;
-  const totalUnits = allProducts.reduce((sum, p) => sum + (+p.stock || 0), 0);
-  document.querySelector(".inventory-values h5").textContent = totalUnits.toLocaleString() + " units";
-}
+  const totalProductsEl = document.querySelector(".total-products h5");
+  const totalSuppliersEl = document.querySelector(".total-suppliers h5");
+  const lowStockItemsEl = document.querySelector(".low-stock-items h5");
+  const inventoryValuesEl = document.querySelector(".inventory-values h5");
 
+  if (totalProductsEl) totalProductsEl.textContent = allProducts.length.toLocaleString();
+  if (totalSuppliersEl) totalSuppliersEl.textContent = allSuppliers.length;
+
+  const lowStockItems = allProducts.filter((p) => +p.stock < +p.Reorder_Level);
+  if (lowStockItemsEl) lowStockItemsEl.textContent = lowStockItems.length;
+
+  const totalUnits = allProducts.reduce((sum, p) => sum + (+p.stock || 0), 0);
+  if (inventoryValuesEl) inventoryValuesEl.textContent = totalUnits.toLocaleString() + " units";
+}
 
 function renderLowStockTable(allProducts) {
   const tbody = document.querySelector(".low-stock-table tbody");
+  if (!tbody) return;
+
   tbody.innerHTML = "";
   const lowItems = allProducts.filter((p) => +p.stock < +p.Reorder_Level);
   if (lowItems.length === 0) {
@@ -80,6 +104,7 @@ function renderLowStockTable(allProducts) {
 
 function renderActivityTable(activities, users) {
   const tbody = document.querySelector(".activity-table tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
   if (!activities || activities.length === 0) {
     tbody.innerHTML = `<tr><td colspan="4" class="text-center text-muted">No recent activity</td></tr>`;
@@ -121,16 +146,31 @@ async function loadDashboardData() {
 }
 
 
-const dashboardHTML = document.querySelector(".contentArea").innerHTML;
-
 
 function restoreDashboard() {
-  document.querySelector(".contentArea").innerHTML = dashboardHTML;
+  const contentArea = document.querySelector(".contentArea");
+  if (!contentArea || !dashboardHTML) return;
+
+  contentArea.innerHTML = dashboardHTML;
   loadDashboardData();
   loadCategoryDropdown();
   initQuickActions();
 }
+async function loadProductsPage() {
+  try {
+    const res = await fetch("../../pages/products.html");
+    const html = await res.text();
+    document.querySelector(".contentArea").innerHTML = html;
 
+
+    if (typeof initProductPage === "function") {
+      initProductPage();
+    }
+
+  } catch (err) {
+    console.error("Failed to load products page:", err);
+  }
+}
 
 async function openAddProductModal() {
   const res = await fetch(Category_API);
@@ -343,7 +383,7 @@ async function openAdjustStockModal() {
     } else {
       row.style.display = "none";
     }
-    // clear amount when action changes
+
     modalEl.querySelector("#adj-amount").value = "";
   });
 
@@ -422,14 +462,27 @@ function checkItems() {
     const item = e.target.closest(".sidebar-item");
     if (!item) return;
 
+    // Remove active state
     sidebarItems.forEach((el) => el.classList.remove("active-item"));
     supplierItem.classList.remove("active-item");
     item.classList.add("active-item");
 
+    // Handle clicks
     if (item.classList.contains("users")) { clearCategoryDropdown(); loadUserWindow(); }
-    if (item.classList.contains("activities")) { clearCategoryDropdown(); loadLogWindow(); }
-    if (item.classList.contains("products")) { clearCategoryDropdown(); }
-    if (item.classList.contains("dashboard")) { restoreDashboard(); }
+    else if (item.classList.contains("activities")) { clearCategoryDropdown(); loadLogWindow(); }
+    else if (item.classList.contains("products")) {
+      clearCategoryDropdown();
+      loadProductsPage();
+    }
+    else if (item.classList.contains("dashboard")) { restoreDashboard(); }
+    else if (item.classList.contains("report")) {
+      clearCategoryDropdown();
+      loadReportsPage();
+    }
+    else if (item.classList.contains("orders")) {
+      clearCategoryDropdown();
+      loadOrderWindow();
+    }
   });
 
   supplierItem.addEventListener("click", () => clearCategoryDropdown());
@@ -437,7 +490,8 @@ function checkItems() {
 
 export async function loadDashboardWindow() {
   await initModal();
-
+  const contentArea = document.querySelector(".contentArea");
+  if (contentArea) dashboardHTML = contentArea.innerHTML;
   checkRole();
   renderUserProfile();
   checkItems();

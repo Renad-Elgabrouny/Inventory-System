@@ -1,6 +1,3 @@
-
-
-
 window.addEventListener("load",function(e){
     table = document.querySelector(".suppdata");
     const body = document.createElement("tbody");
@@ -128,7 +125,21 @@ window.addEventListener("load",function(e){
                 throw new Error("Failed to add supplier");
             }
             const data = await response.json();
-            console.log("Added supplier:", data);
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "action":"supplier added",
+                    "entity":"supplier",
+                    "supplierId":data._id,
+                    "date":new Date().toLocaleDateString()
+                })
+            });
+            const activity = await activityLog.json();
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
+            console.log("Added supplier:", data,activity);
         } catch (error) {
             console.error("Error:", error.message);
         }
@@ -142,13 +153,27 @@ window.addEventListener("load",function(e){
             if (!response.ok) {
                 throw new Error("Failed to delete supplier");
             }
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "action":"supplier deleted",
+                    "entity":"supplier",
+                    "supplierId":id,
+                    "date":new Date().toLocaleDateString()
+                })
+            });
+            const activity = await activityLog.json();
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
             let data = null;
                 try {
                     data = await response.json();
                 } catch {
                     data = { message: "Deleted successfully (no response body)" };
                 }
-            console.log("RES", data);
+            console.log("RES", data,activity);
         } catch (error) {
             console.error("Error deleting supplier:", error.message);
         }
@@ -176,7 +201,21 @@ window.addEventListener("load",function(e){
                 throw new Error("Failed to update supplier");
             }
             const data = await response.json();
-            return data;
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "action":"supplier updated",
+                    "entity":"supplier",
+                    "supplierId":id,
+                    "date":new Date().toLocaleDateString()
+                })
+            });
+            const activity = await activityLog.json();
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
+            return {data,activity};
         } catch (error) {
             console.error("Error updating supplier:", error.message);
             return null;

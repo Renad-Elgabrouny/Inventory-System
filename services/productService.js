@@ -1,5 +1,6 @@
-import { add_Product_API, adjsment_stock, adjustment_API, categoryName, product, Product_API } from "../services/fetch.js"
-
+import { add_Product_API, adjsment_stock, adjustment_API, categoryName, product, Product_API, supplierName } from "../services/fetch.js"
+import { AuthService } from "../../services/authService.js";
+import { ActivityService } from "../../services/activityLogService.js";
 export function initProductPage() {
 
     let _name = document.getElementById("name")
@@ -9,6 +10,7 @@ export function initProductPage() {
     let recorded = document.getElementById("recorded")
     let update_Recorded = document.getElementById("update_Recorded")
     let sku = document.getElementById("sku")
+    let price = document.getElementById("price")
     let image = document.getElementById("image")
     let add = document.getElementById("add")
     let body = document.querySelector(".body")
@@ -22,6 +24,7 @@ export function initProductPage() {
     let Update_category = document.getElementById("Update_category")
     let Update_supplier = document.getElementById("Update_supplier")
     let Update_sku = document.getElementById("Update_sku")
+    let Update_price = document.getElementById("Update_price")
     let Update_image = document.getElementById("Update_image")
     let update = document.getElementById("update")
     let search = document.getElementById("search")
@@ -36,6 +39,7 @@ export function initProductPage() {
     let product_data = Array.isArray(product) ? product : []
     let adjustment_data = Array.isArray(adjsment_stock) ? adjsment_stock : []
     let category_data = Array.isArray(categoryName) ? categoryName : []
+    let supplier_data = Array.isArray(supplierName) ? supplierName : []
 
 
 
@@ -49,6 +53,7 @@ export function initProductPage() {
     <td><div class="level"></div><span class="value">${value.stock}</span></td>
     <td>${value.Reorder_Level}</td>
     <td>${value.sku}</td>
+    <td>${value.price}</td>
     <td><button data-id="${value.id}"  class="edit">✎</button> <button data-id="${value.id}" class="delete">🗑</button></td>
     </tr>
     `
@@ -80,12 +85,18 @@ export function initProductPage() {
 
     add.addEventListener("click", async (e) => {
         e.preventDefault()
-
-
-
-        add_Product_API(_name, category, supplier, stock, recorded, sku, image)
-
-
+        if (_name.value == "" || category.value == "" || supplier.value == "", stock.value == "",
+            recorded.value == "", sku.value == "" || image.value == "", price.value == "") {
+            alert("you must enter product details")
+        } else {
+            add_Product_API(_name, category, supplier, stock, recorded, sku, price, image);
+            await ActivityService.createActivity({
+                action: "Product Added",
+                entity: "products",
+                userId: AuthService.getCurrentUser().id,
+                date: new Date().toISOString().split("T")[0]
+            });
+        }
     })
 
     function edit_Product() {
@@ -103,6 +114,7 @@ export function initProductPage() {
                         Update_name.value = item.name
                         Update_category.value = item.category
                         Update_sku.value = item.sku
+                        Update_price.value = item.price
                         Update_supplier.value = item.supplier
                         update_Recorded.value = item.Reorder_Level
                         Update_image.value = item.image
@@ -129,11 +141,18 @@ export function initProductPage() {
                 name: Update_name.value,
                 category: Update_category.value,
                 sku: Update_sku.value,
+                price: Update_price.value,
                 supplier: Update_supplier.value,
                 Reorder_Level: update_Recorded.value,
                 image: Update_image.value,
             })
         })
+        await ActivityService.createActivity({
+            action: "Product Updated",
+            entity: "products",
+            userId: AuthService.getCurrentUser().id,
+            date: new Date().toISOString().split("T")[0]
+        });
         const data = await response.json()
         alert("updated successfully")
     })
@@ -166,8 +185,20 @@ export function initProductPage() {
                 const res = await fetch(`http://localhost:3000/product/${id}`, {
                     method: "DELETE"
                 })
-                const data = await res.json()
+                const data = await res.json();
+                await ActivityService.createActivity({
+                    action: "Product Deleted",
+                    entity: "products",
+                    userId: AuthService.getCurrentUser().id,
+                    date: new Date().toISOString().split("T")[0]
+                });
                 alert("The Product Deleted successfully")
+                await ActivityService.createActivity({
+                    action: "Product delete",
+                    entity: "products",
+                    userId: AuthService.getCurrentUser().id,
+                    date: new Date().toISOString().split("T")[0]
+                });
 
             })
         })
@@ -184,6 +215,12 @@ export function initProductPage() {
         let Unique_Category = [...new Set(category_data.map(item => item.name))]
         Unique_Category.forEach((cat) => {
             category.innerHTML += `<option class="options" value="${cat}">${cat}</option>`
+        })
+
+        supplier.innerHTML = `<option class="options" value="">select supplier</option>`
+        let Unique_supplier = [...new Set(supplier_data.map(item => item.name))]
+        Unique_supplier.forEach((sup) => {
+            supplier.innerHTML += `<option class="options" value="${sup}">${sup}</option>`
         })
     })
     clouse.addEventListener("click", () => {
@@ -287,22 +324,31 @@ export function initProductPage() {
         e.preventDefault()
         console.log(amount.value);
 
-        product_data.forEach((item) => {
-            let result = +item.stock - +amount.value
-            console.log(result);
+        if (Adjasment_Name.value == "" || Adjasment_quantity.value == "" || Adjasment_category.value == "" || action.value == "" || reason.value == "") {
+            alert("please enter the data")
+        } else {
+            product_data.forEach((item) => {
+                let result = +item.stock - +amount.value
+                console.log(result);
 
-        })
-        const res = await fetch(`${Product_API}/${adj_BTN.dataset.id}`, {
-            method: "PATCH",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify({
-                stock: amount.value
             })
+            const res = await fetch(`${Product_API}/${adj_BTN.dataset.id}`, {
+                method: "PATCH",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                    stock: amount.value
+                })
 
-        })
-        const data = await res.json()
-        Add_adjustment()
-
+            })
+            const data = await res.json()
+            Add_adjustment()
+            await ActivityService.createActivity({
+                action: "Product Adjustment",
+                entity: "products",
+                userId: AuthService.getCurrentUser().id,
+                date: new Date().toISOString().split("T")[0]
+            });
+        }
 
 
     })

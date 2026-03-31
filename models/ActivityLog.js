@@ -28,8 +28,7 @@ export class Activity {
   }
 
   set entity(value) {
-    const allowedEntities = ["products", "categories", "orders", "suppliers", "users"];
-    if (!value || !allowedEntities.includes(value)) {
+    if (!value) {
       throw new ValidationError("Invalid entity type", value);
     }
     this.#entity = value;

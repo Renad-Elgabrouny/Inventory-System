@@ -818,6 +818,97 @@
         "city": "Sydney",
         "street": "George St."
       }
+    },
+    {
+      "id": "afb6",
+      "ssc": "777777777777",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "australia",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "ccd5",
+      "ssc": "9999999",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "australia",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "4eb9",
+      "ssc": "10203040",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "ssc": "909090100",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      },
+      "id": "b5bb"
+    },
+    {
+      "id": "ca19",
+      "ssc": "100000000000",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "europ",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "b1c9",
+      "ssc": "200000000000000000",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
+    },
+    {
+      "id": "23e3",
+      "ssc": "3000000000000000",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
+      "address": {
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
+      }
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

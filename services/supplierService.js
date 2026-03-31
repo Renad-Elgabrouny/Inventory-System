@@ -1,3 +1,5 @@
+import {ActivityService} from '../services/activityLogService';
+
 window.addEventListener("load",function(e){
     table = document.querySelector(".suppdata");
     const body = document.createElement("tbody");
@@ -125,21 +127,29 @@ window.addEventListener("load",function(e){
                 throw new Error("Failed to add supplier");
             }
             const data = await response.json();
-            const activityLog = await fetch("http://localhost:3000/activityLogs", {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    "action":"supplier added",
-                    "entity":"supplier",
-                    "supplierId":data._id,
-                    "date":new Date().toLocaleDateString()
-                })
+            // const activityLog = await fetch("http://localhost:3000/activityLogs", {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({
+            //         "action":"supplier added",
+            //         "entity":"supplier",
+            //         "userId":data._id,
+            //         "date":new Date().toLocaleDateString()
+            //     })
+            // });
+            // const activity = await activityLog.json();
+            // if (!activityLog.ok) {
+            //     throw new Error("Failed to log activity");
+            // }
+            const created = await ActivityService.createActivity({
+                action: "supplier added",
+                entity: "supplier",
+                userId: data.id,
+                date: new Date().toLocaleDateString()
             });
-            const activity = await activityLog.json();
-            if (!activityLog.ok) {
-                throw new Error("Failed to log activity");
-            }
-            console.log("Added supplier:", data,activity);
+            const Created = await created.json();
+            alert(data);
+            console.log("Activity created:", Created);
         } catch (error) {
             console.error("Error:", error.message);
         }
@@ -159,7 +169,7 @@ window.addEventListener("load",function(e){
                 body: JSON.stringify({
                     "action":"supplier deleted",
                     "entity":"supplier",
-                    "supplierId":id,
+                    "userId":id,
                     "date":new Date().toLocaleDateString()
                 })
             });
@@ -205,16 +215,17 @@ window.addEventListener("load",function(e){
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    "action":"supplier updated",
-                    "entity":"supplier",
-                    "supplierId":id,
-                    "date":new Date().toLocaleDateString()
+                    action:"supplier updated",
+                    entity:"supplier",
+                    userId:id,
+                    date:new Date().toLocaleDateString()
                 })
             });
-            const activity = await activityLog.json();
             if (!activityLog.ok) {
                 throw new Error("Failed to log activity");
             }
+            const activity = await activityLog.json();
+            console.log(activity);
             return {data,activity};
         } catch (error) {
             console.error("Error updating supplier:", error.message);

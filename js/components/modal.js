@@ -179,6 +179,21 @@ $(document).on("click", ".supplier", function () {
                 }
                 const data = await response.json();
                 console.log("Added supplier:", data);
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "action":"supplier added",
+                        "entity":"supplier",
+                        "userId":data.id,
+                        "date":new Date().toLocaleDateString()
+                    })
+                });
+                const activity = await activityLog.json();
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                console.log("Activity created:", activity);
             } catch (error) {
                 console.error("Error:", error.message);
             }
@@ -193,6 +208,21 @@ $(document).on("click", ".supplier", function () {
                     throw new Error("Failed to delete supplier");
                 }
                 let data = null;
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "action":"supplier deleted",
+                        "entity":"supplier",
+                        "userId":id,
+                        "date":new Date().toLocaleDateString()
+                    })
+                });
+                const activity = await activityLog.json();
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                console.log(activity);
                 try {
                     data = await response.json();
                 } catch {
@@ -226,7 +256,21 @@ $(document).on("click", ".supplier", function () {
                     throw new Error("Failed to update supplier");
                 }
                 const data = await response.json();
-                return data;
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action:"supplier updated",
+                        entity:"supplier",
+                        userId:id,
+                        date:new Date().toLocaleDateString()
+                    })
+                });
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                const activity = await activityLog.json();
+                console.log(activity);
             } catch (error) {
                 console.error("Error updating supplier:", error.message);
                 return null;
@@ -298,9 +342,12 @@ $(document).on("click", ".supplier", function () {
             const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
             modal.show();
         }
-        document.getElementById("confirmDelete").addEventListener("click", function () {
-            deleteSupplier(supplierToDelete)
-            renderSuppliers();
+        document.getElementById("confirmDelete").addEventListener("click", async function (e) {
+            e.preventDefault();
+
+            await deleteSupplier(supplierToDelete);
+
+            await renderSuppliers();
         });
         $(document).on("click", "#deleteBtn", function () {
             console.log($(this).attr("class"));

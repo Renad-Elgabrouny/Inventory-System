@@ -419,6 +419,33 @@
       "entity": "orders",
       "userId": "3",
       "date": "2026-03-29"
+    },
+    {
+      "id": "f3d2",
+      "action": "supplier updated",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
+    },
+    {
+      "id": "6e3c",
+      "action": "supplier updated",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
+    },
+    {
+      "id": "eeef",
+      "action": "supplier deleted",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
+    },
+    {
+      "id": "6279",
+      "action": "supplier added",
+      "entity": "supplier",
+      "date": "3/31/2026"
     }
   ],
   "users": [
@@ -807,99 +834,8 @@
       }
     },
     {
-      "id": "8e43",
-      "ssc": "AU-001-2024",
-      "name": "Pacific Rim Exports",
-      "phone": "01632109876",
-      "email": "exports@pacificrim.com",
-      "address": {
-        "continent": "Australia",
-        "country": "Australia",
-        "city": "Sydney",
-        "street": "George St."
-      }
-    },
-    {
-      "id": "afb6",
-      "ssc": "777777777777",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "australia",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      }
-    },
-    {
-      "id": "ccd5",
-      "ssc": "9999999",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "australia",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      }
-    },
-    {
-      "id": "4eb9",
-      "ssc": "10203040",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "Africa",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      }
-    },
-    {
-      "ssc": "909090100",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "Africa",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      },
-      "id": "b5bb"
-    },
-    {
-      "id": "ca19",
-      "ssc": "100000000000",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "europ",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      }
-    },
-    {
-      "id": "b1c9",
-      "ssc": "200000000000000000",
-      "name": "MOHAMED ATIA",
-      "phone": "01062765839",
-      "email": "muhamedatia22@gmail.com",
-      "address": {
-        "continent": "Africa",
-        "country": "Egypt",
-        "city": "samanoud",
-        "street": "One"
-      }
-    },
-    {
-      "id": "23e3",
-      "ssc": "3000000000000000",
+      "id": "b8e9",
+      "ssc": "3030303033",
       "name": "MOHAMED ATIA",
       "phone": "01062765839",
       "email": "muhamedatia22@gmail.com",

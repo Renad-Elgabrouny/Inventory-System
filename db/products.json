@@ -1,17 +1,6 @@
 {
   "product": [
     {
-      "id": "1",
-      "name": "laptopssss",
-      "category": "electronic",
-      "supplier": "karim yasser",
-      "stock": "35",
-      "Reorder_Level": "100",
-      "sku": "lopp",
-      "price": "2000",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiQrqGNNTR7xwgo2dIb0enMOFgw_5N3X26dA&s"
-    },
-    {
       "id": "2",
       "name": "samsung",
       "category": "mobile",
@@ -185,6 +174,16 @@
       "Reorder_Level": "2",
       "sku": "lappp",
       "image": ""
+    },
+    {
+      "id": "0522",
+      "name": "bottels",
+      "category": "Computer Accessories",
+      "supplier": "Cairo Electronics Co.",
+      "stock": "300",
+      "Reorder_Level": "100",
+      "sku": "lop",
+      "image": "150"
     }
   ],
   "adjustment": [
@@ -309,116 +308,12 @@
   ],
   "activityLogs": [
     {
-      "id": "2",
-      "action": "Product Created",
-      "entity": "product",
-      "userId": "a370",
-      "date": "2026-03-15"
-    },
-    {
-      "id": "3",
-      "action": "Product Created",
-      "entity": "product",
-      "userId": "e7ea",
-      "date": "2026-03-15"
-    },
-    {
-      "id": "4",
-      "action": "Stock Adjusted",
-      "entity": "product",
-      "userId": "89cf",
-      "date": "2026-03-18"
-    },
-    {
-      "id": "5",
-      "action": "Order Received",
-      "entity": "orders",
-      "userId": "c93f",
-      "date": "2026-03-20"
-    },
-    {
-      "id": "3dde",
-      "action": "User Updated",
-      "entity": "users",
-      "userId": "e7ea",
-      "date": "2026-03-28"
-    },
-    {
-      "id": "f1a2",
-      "action": "Supplier Added",
-      "entity": "suppliers",
-      "userId": "a370",
-      "date": "2026-03-25"
-    },
-    {
-      "id": "b3c4",
-      "action": "Order Canceled",
-      "entity": "orders",
-      "userId": "3",
-      "date": "2026-03-22"
-    },
-    {
-      "id": "0866",
-      "action": "User Updated",
-      "entity": "users",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "63ce",
-      "action": "User Deleted",
-      "entity": "users",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "f647",
+      "id": "8854",
       "action": "Product Added",
-      "entity": "products",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "763a",
-      "action": "Product Updated",
-      "entity": "products",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "661d",
-      "action": "Product Deleted",
-      "entity": "products",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "34fc",
-      "action": "Product delete",
-      "entity": "products",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "de7b",
-      "action": "Order Created",
-      "entity": "orders",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "6237",
-      "action": "Order Updated",
-      "entity": "orders",
-      "userId": "3",
-      "date": "2026-03-29"
-    },
-    {
-      "id": "0b0e",
-      "action": "Order Received",
-      "entity": "orders",
-      "userId": "3",
-      "date": "2026-03-29"
+      "entity": "bottels",
+      "userId": "08ca",
+      "quantity": "300",
+      "date": "2026-04-01"
     }
   ],
   "users": [
@@ -497,6 +392,20 @@
       "name": "Masa Khaled",
       "email": "masakhaled@gmail.com",
       "password": "M12345678",
+      "role": "user"
+    },
+    {
+      "id": "594b",
+      "name": "mahmoud",
+      "email": "mahmoud@gmail.com",
+      "password": "0123456789Ky",
+      "role": "user"
+    },
+    {
+      "id": "08ca",
+      "name": "mahmoud",
+      "email": "mahmoud10@gmail.com",
+      "password": "123456789Ky",
       "role": "user"
     }
   ],
@@ -673,6 +582,14 @@
       "quantity": 7,
       "status": "pending",
       "date": "2026-03-29"
+    },
+    {
+      "id": "1775063109990",
+      "supplierId": "karim yasser",
+      "productId": "laptop",
+      "quantity": 20,
+      "status": "pending",
+      "date": "2026-04-01"
     }
   ],
   "suppliers": [

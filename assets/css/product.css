@@ -184,6 +184,7 @@ select{
 
 
 
+
 .container{
   display: flex;
   align-items: end;
@@ -225,17 +226,144 @@ select{
   width: 100%;
 }
 
+.responheadTitle{
+  display: none;
+}
+
+.responsive_body,.responsive_head{
+  display: none;
+}
 
 
-/* @media (max-width: 900px){
-  #adjsmentForm{
-    grid-template-columns: 1fr 1fr;
+.responsive_product-table{
+  display: none;
+}
+
+@media (max-width: 400px) {
+
+  .responheadTitle{
+  display: block;
+}
+#responsearch{
+  display: block;
+  width: 100%;
+  padding: 10px;
+    border-radius: 15px;
+    background-color: rgba(239, 237, 237, 0.793);
+    margin-top: 10px;
+
+}
+
+.responsive_body,.responsive_head{
+  display: block;
+}
+.body, .head{
+  display: none;
+}
+
+.product-table{
+  display: none;
+}
+.responsive_product-table{
+  display: block;
+  width: 100%;
+    margin: 10px 0;
+}
+
+.adjsment,.addProduct,#search{
+  display: none;
+  
+}
+
+.responadjsment,.responaddProduct{
+   padding: 12px;
+    border-radius: 15px;
+    background-color: mediumorchid;
+    color: white;
+    margin: 15px;
+}
+.responsive_head {
+    display: grid;
+    grid-template-columns: 110px 1fr 80px 80px;
+    align-items: center;
+    column-gap: 14px;
+    width: 100%;
+  }
+
+.responsive_product-table {
+  table-layout: fixed;
+
+}
+
+.responsive_product-table th,
+.responsive_product-table td {
+  width: 25%;
+  text-align: center;
+}
+
+
+  .form,
+  .Edit_form,
+  #adjsmentForm {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .form div,
+  .Edit_form div,
+  #adjsmentForm div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .form input,
+  .Edit_form input,
+  #adjsmentForm input,
+  .form select,
+  .Edit_form select,
+  #adjsmentForm select {
+    width: 100%;
+  }
+
+  #add,
+  #update,
+  #adj_BTN {
+    width: 100%;
+  }
+  .headTitle{
+    display: flex;
+    justify-content: space-between;
+  }
+  #search{
+    height: 30px;
+    width: 180px;
+  }
+  .subTitle{
+    display: flex;
+    justify-content: space-between;
+  }
+  .adjsment,.addProduct{
+    height: 25px;
+  }
+  .options{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  .edit{
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+  }
+  .delete{
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    
   }
 }
 
-@media (max-width: 600px){
-  #adjsmentForm{
-    grid-template-columns: 1fr;
-    padding: 22px 18px 16px;
-  }
-} */

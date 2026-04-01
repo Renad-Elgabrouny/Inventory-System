@@ -6,7 +6,7 @@ export class Activity {
   #userId;
   #date;
 
-  constructor({ action, entity, userId, date }) {
+  constructor({ action, entity, userId,date }) {
     this.action = action;
     this.entity = entity;
     this.userId = userId;
@@ -17,6 +17,7 @@ export class Activity {
   get action() { return this.#action; }
   get entity() { return this.#entity; }
   get userId() { return this.#userId; }
+  get quantity() { return this.#quantity; }
   get date() { return this.#date; }
 
   // ===== Setters =====
@@ -29,9 +30,9 @@ export class Activity {
 
   set entity(value) {
     const allowedEntities = ["products", "categories", "orders", "suppliers", "users"];
-    if (!value || !allowedEntities.includes(value)) {
-      throw new ValidationError("Invalid entity type", value);
-    }
+    // if (!value || !allowedEntities.includes(value)) {
+    //   throw new ValidationError("Invalid entity type", value);
+    // }
     this.#entity = value;
   }
 

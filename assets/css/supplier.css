@@ -62,13 +62,13 @@
 #supplier{
     padding: 13px 26px;
     border-radius: 16px;
-    border: 1px solid rgba(37, 99, 235, 1);
+    border: 1px solid #9333ea;
     background-color: rgba(248, 250, 252, 1);
 }
 #addbutt{
     border-radius: 16px;
     border: none;
-    background-color: rgba(37, 99, 235, 1);
+    background-color: #9333ea;
     padding: 10px 20px;
     color: white;
 }
@@ -128,7 +128,7 @@ input:focus {
     outline: none; 
 }
 .submit,.modify,.cancel{
-    background-color: rgba(37, 99, 235, 1);
+    background-color: #9333ea;
     color: white;
 }
 @media (max-width: 600px) {

@@ -79,22 +79,11 @@ $(document).on("click", ".supplier", function () {
                 street.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 street.classList.add("d-none");
                 street.classList.add("d-lg-table-cell");
-                const updatetd = document.createElement("td");
-                const update = document.createElement("button");
-                update.style.cssText = `background-color:rgb(37, 99, 235);padding:2px;color:white;border:none;border-radius:5px`;
-                update.id = "updateBtn";
-                update.classList.add(item.id);
-                update.value = "Update";
-                update.textContent = "Update";
-                updatetd.appendChild(update);
-                const deletetd = document.createElement("td");
-                const deletee = document.createElement("button");
-                deletee.style.cssText = `background-color:red;padding:2px;color:white;border:none;border-radius:5px`;
-                deletee.id = "deleteBtn";
-                deletee.classList.add(item.id);
-                deletee.value = "Delete";
-                deletee.textContent = "Delete";
-                deletetd.appendChild(deletee);
+                const actionsTd = document.createElement("td");
+                actionsTd.innerHTML = `
+                    <i class="fa-solid fa-pen me-3 actions edit-supplier" supplierId="${item.id}" style="cursor:pointer;color:#9333ea;font-size:15px"></i><i class="fa-regular fa-trash-can actions delete-supplier" supplierId="${item.id}" style="cursor:pointer;color:#9333ea;font-size:15px"></i>
+                `;
+
                 ssn.textContent = item.ssc;
                 name.textContent = item.name;
                 phone.textContent = item.phone;
@@ -111,10 +100,7 @@ $(document).on("click", ".supplier", function () {
                 tr.appendChild(country);
                 tr.appendChild(city);
                 tr.appendChild(street);
-                //updatetd.classList.add(item.id)
-                tr.appendChild(updatetd);
-                //deletetd.classList.add(item.id)
-                tr.appendChild(deletetd);
+                tr.appendChild(actionsTd);
                 body.appendChild(tr);
                 tr.classList.add(item.id);
                 table.appendChild(body);
@@ -302,17 +288,14 @@ $(document).on("click", ".supplier", function () {
             deleteSupplier(supplierToDelete)
             renderSuppliers();
         });
-        $(document).on("click", "#deleteBtn", function () {
-            console.log($(this).attr("class"));
-            const id = $(this).attr("class");
+        $(document).on("click", ".delete-supplier", function () {
+            const id = $(this).attr("supplierId");
             openDeleteModal(id);
         });
-
-        $(document).on("click", "#updateBtn", function () {
+        $(document).on("click", ".edit-supplier", function () {
             $(".submit").hide();
             $(".modify").show();
-            console.log($(this).attr("class"));
-            const id = $(this).attr("class");
+            const id = $(this).attr("supplierId");
             $(".addSupplier").show();
             $(".container").hide();
             getSupplier(id)
@@ -329,12 +312,6 @@ $(document).on("click", ".supplier", function () {
             body.innerHTML = "";
             showData(result);
         })
-        // supplier.addEventListener("input",function(e){
-        //     console.log(e.target.value);
-        //     const result1 = searcharr.filter(sup => sup.continent.includes(e.target.value));
-        //     body.innerHTML = "";
-        //     showData(result1);
-        // })
     });
 });
 

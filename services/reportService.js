@@ -15,13 +15,13 @@ export function initReportPage() {
       const reorder = document.createElement("td");
       reorder.style.cssText = `color: rgba(100, 116, 139, 1);`;
       const supplier = document.createElement("td");
-      supplier.style.cssText = `color:rgb(37, 99, 235)`;
-      const action = document.createElement("td");
-      const button = document.createElement("button");
-      button.value = "Order Now";
-      button.innerText = "Order Now";
-      button.style.cssText = `background-color: rgb(37, 99, 235);padding:6px;border-radius:10px;border:none;color:white`;
-      action.appendChild(button);
+      supplier.style.cssText = `color:#9333ea`;
+      // const action = document.createElement("td");
+      // const button = document.createElement("button");
+      // button.value = "Order Now";
+      // button.innerText = "Order Now";
+      // button.style.cssText = `background-color: #9333ea;padding:6px;border-radius:10px;border:none;color:white`;
+      // action.appendChild(button);
       name.textContent = item.name;
       stock.textContent = item.stock;
       reorder.textContent = item.Reorder_Level;
@@ -30,7 +30,7 @@ export function initReportPage() {
       tr.appendChild(stock);
       tr.appendChild(reorder);
       tr.appendChild(supplier);
-      tr.appendChild(action);
+      // tr.appendChild(action);
       body.appendChild(tr);
     }
     table.appendChild(body);
@@ -51,7 +51,7 @@ export function initReportPage() {
       const price = document.createElement("td");
       price.style.cssText = `color: rgba(100, 116, 139, 1);`;
       const total = document.createElement("td");
-      total.style.cssText = `color:rgb(37, 99, 235)`;
+      total.style.cssText = `color:#9333ea`;
       name.textContent = item.name;
       stock.textContent = item.stock;
       price.textContent = item.price;

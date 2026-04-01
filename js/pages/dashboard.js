@@ -22,6 +22,21 @@ const Category_API = "http://localhost:3000/categories";
 const Users_API = "http://localhost:3000/users";
 const Adjustment_API = "http://localhost:3000/adjustment";
 
+async function logDashboardActivity(action, entityDisplayName) {
+  const user = AuthService.getCurrentUser();
+  const label = String(entityDisplayName || "").trim();
+  if (!user?.id || !label) return;
+  try {
+    await ActivityService.createActivity({
+      action,
+      entity: label,
+      userId: user.id,
+      date: new Date().toISOString().split("T")[0],
+    });
+  } catch (err) {
+    console.error("Activity log failed:", err);
+  }
+}
 
 function checkRole() {
   const usr = AuthService.getCurrentUser();
@@ -173,11 +188,21 @@ async function loadProductsPage() {
 }
 
 async function openAddProductModal() {
-  const res = await fetch(Category_API);
-  const categories = res.ok ? await res.json() : [];
+  // Fetch both categories and suppliers in parallel
+  const [catRes, supRes] = await Promise.all([
+    fetch(Category_API),
+    fetch(Supplier_API),
+  ]);
+  const categories = catRes.ok ? await catRes.json() : [];
+  const suppliers = supRes.ok ? await supRes.json() : [];
 
   const categoryOptions = categories
     .map((c) => `<option value="${c.name}">${c.name}</option>`)
+    .join("");
+
+  // Build supplier dropdown options using supplier name
+  const supplierOptions = suppliers
+    .map((s) => `<option value="${s.name}">${s.name}</option>`)
     .join("");
 
   const content = `
@@ -195,7 +220,10 @@ async function openAddProductModal() {
       </div>
       <div class="mb-3">
         <label class="form-label">Supplier</label>
-        <input type="text" id="dp-supplier" class="form-control" placeholder="Supplier name" required />
+        <select id="dp-supplier" class="form-select" required>
+          <option value="">Select Supplier</option>
+          ${supplierOptions}
+        </select>
       </div>
       <div class="row">
         <div class="col mb-3">
@@ -206,6 +234,10 @@ async function openAddProductModal() {
           <label class="form-label">Reorder Level</label>
           <input type="number" id="dp-reorder" class="form-control" placeholder="0" required />
         </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" id="dp-price" class="form-control" placeholder="0" min="0" step="any" required />
       </div>
       <div class="mb-3">
         <label class="form-label">SKU</label>
@@ -227,13 +259,14 @@ async function openAddProductModal() {
     e.preventDefault();
     const name = modalEl.querySelector("#dp-name").value.trim();
     const category = modalEl.querySelector("#dp-category").value;
-    const supplier = modalEl.querySelector("#dp-supplier").value.trim();
+    const supplier = modalEl.querySelector("#dp-supplier").value;
     const stock = modalEl.querySelector("#dp-stock").value;
     const reorder = modalEl.querySelector("#dp-reorder").value;
+    const price = modalEl.querySelector("#dp-price").value;
     const sku = modalEl.querySelector("#dp-sku").value.trim();
     const image = modalEl.querySelector("#dp-image").value.trim();
 
-    if (!name || !category || !supplier || !stock || !reorder || !sku) {
+    if (!name || !category || !supplier || !stock || !reorder || !sku || price === "") {
       alert("Please fill in all required fields.");
       return;
     }
@@ -241,9 +274,10 @@ async function openAddProductModal() {
       const postRes = await fetch(Product_API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, category, supplier, stock, Reorder_Level: reorder, sku, image }),
+        body: JSON.stringify({ name, category, supplier, stock, Reorder_Level: reorder, sku, image, price }),
       });
       if (!postRes.ok) throw new Error("Failed to add product");
+      await logDashboardActivity("Product added from dashboard", name);
       alert("Product added successfully!");
       closeModal();
       loadDashboardData();
@@ -262,7 +296,7 @@ async function openAddCategoryModal() {
     ? categories.map((cat) => `
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <span>${cat.name}</span>
-          <button class="btn btn-sm btn-outline-danger delete-cat-btn" data-id="${cat.id}">
+          <button type="button" class="btn btn-sm btn-outline-danger delete-cat-btn" data-id="${cat.id}" data-name="${encodeURIComponent(cat.name)}">
             <i class="fa-solid fa-trash"></i>
           </button>
         </li>`).join("")
@@ -271,7 +305,7 @@ async function openAddCategoryModal() {
   const content = `
     <div class="d-flex gap-2 mb-3">
       <input type="text" id="new-cat-name" class="form-control" placeholder="Category name..." />
-      <button id="save-cat-btn" class="btn" style="background-color:#9333ea;color:white;white-space:nowrap">
+      <button type="button" id="save-cat-btn" class="btn" style="background-color:#9333ea;color:white;white-space:nowrap">
         <i class="fa-solid fa-plus me-1"></i> Add
       </button>
     </div>
@@ -290,6 +324,7 @@ async function openAddCategoryModal() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, description: [] }),
     });
+    await logDashboardActivity("Category added from dashboard", name);
     loadCategoryDropdown();
     openAddCategoryModal();
   });
@@ -297,8 +332,10 @@ async function openAddCategoryModal() {
   modalEl.querySelector("#cat-list").addEventListener("click", async (e) => {
     const btn = e.target.closest(".delete-cat-btn");
     if (!btn) return;
+    const catName = decodeURIComponent(btn.dataset.name || "");
     if (!confirm("Delete this category?")) return;
     await fetch(`${Category_API}/${btn.dataset.id}`, { method: "DELETE" });
+    await logDashboardActivity("Category deleted from dashboard", catName || `Category #${btn.dataset.id}`);
     loadCategoryDropdown();
     openAddCategoryModal();
   });
@@ -346,7 +383,7 @@ async function openAdjustStockModal() {
         <label class="form-label">Reason <small class="text-muted">(optional)</small></label>
         <input type="text" id="adj-reason" class="form-control" placeholder="e.g. damage, restock..." />
       </div>
-      <button id="adj-btn" class="btn w-100 btn-warning">
+      <button type="button" id="adj-btn" class="btn w-100 btn-warning">
         <i class="fa-solid fa-arrow-up-down me-1"></i> Apply Adjustment
       </button>
     </div>
@@ -412,6 +449,7 @@ async function openAdjustStockModal() {
     }
 
     const quantity = action === "decrease" ? oldStock - newStock : newStock - oldStock;
+    const subjectLabel = `${selectedProduct.name} (${selectedProduct.sku})`;
 
     try {
       const patchRes = await fetch(`${Product_API}/${selectedProduct.id}`, {
@@ -435,6 +473,8 @@ async function openAdjustStockModal() {
       });
       if (!adjRes.ok) throw new Error("Failed to save adjustment");
 
+      const stockVerb = action === "increase" ? "increased" : "decreased";
+      await logDashboardActivity(`Stock ${stockVerb} from dashboard`, subjectLabel);
       alert("Stock adjusted successfully!");
       closeModal();
       loadDashboardData();

@@ -14,6 +14,7 @@ export function initProductPage() {
     let image = document.getElementById("image")
     let add = document.getElementById("add")
     let body = document.querySelector(".body")
+    let responsive_body = document.querySelector(".responsive_body")
     let form = document.querySelector(".form")
     let Edit_form = document.querySelector(".Edit_form")
     let addProduct = document.querySelector(".addProduct")
@@ -28,8 +29,11 @@ export function initProductPage() {
     let Update_image = document.getElementById("Update_image")
     let update = document.getElementById("update")
     let search = document.getElementById("search")
+    let responsearch = document.getElementById("responsearch")
     let showProducts = document.querySelector(".showProducts")
     let adjClouse = document.querySelector(".adjClouse")
+    let responaddProduct = document.querySelector(".responaddProduct")
+    let responadjsment = document.querySelector(".responadjsment")
 
 
     form.style.display = "none"
@@ -55,6 +59,23 @@ export function initProductPage() {
     <td>${value.sku}</td>
     <td>${value.price}</td>
     <td><button data-id="${value.id}"  class="edit">✎</button> <button data-id="${value.id}" class="delete">🗑</button></td>
+    
+    </tr>
+    `
+
+
+
+       responsive_body.innerHTML += `
+    <tr>
+    <td><img src="${value.image}" width="90" height="60"></td>
+    <td class="pro_name">${value.name}</td>
+    <td><div class="level"></div><span class="value">${value.stock}</span></td>
+    <td>${value.price}</td>
+    <div class="options">
+     <button data-id="${value.id}"  class="edit">update</button> 
+    <button data-id="${value.id}" class="delete">delete</button>
+    </div>
+    <hr/>
     </tr>
     `
     }
@@ -92,8 +113,9 @@ export function initProductPage() {
             add_Product_API(_name, category, supplier, stock, recorded, sku, price, image);
             await ActivityService.createActivity({
                 action: "Product Added",
-                entity: "products",
+                entity: `${_name.value}`,
                 userId: AuthService.getCurrentUser().id,
+                quantity: `${stock.value}`,
                 date: new Date().toISOString().split("T")[0]
             });
         }
@@ -173,6 +195,21 @@ export function initProductPage() {
             edit_Product()
             Delete_Product()
         })
+        responsearch.addEventListener("input", () => {
+            body.innerHTML = ""
+            product_data.forEach((item) => {
+                if (item.name.includes(responsearch.value) ||
+                    item.category.includes(responsearch.value) ||
+                    item.supplier.includes(responsearch.value) ||
+                    item.sku.includes(responsearch.value) ||
+                    item.stock.includes(responsearch.value)
+                ) {
+                    Show_Table(item)
+                }
+            })
+            edit_Product()
+            Delete_Product()
+        })
 
     }
 
@@ -209,6 +246,23 @@ export function initProductPage() {
 
 
     addProduct.addEventListener("click", () => {
+        form.style.display = ""
+        showProducts.style.display = "none"
+        category.innerHTML = `<option class="options" value="">select Category</option>`
+        let Unique_Category = [...new Set(category_data.map(item => item.name))]
+        Unique_Category.forEach((cat) => {
+            category.innerHTML += `<option class="options" value="${cat}">${cat}</option>`
+        })
+
+        supplier.innerHTML = `<option class="options" value="">select supplier</option>`
+        let Unique_supplier = [...new Set(supplier_data.map(item => item.name))]
+        Unique_supplier.forEach((sup) => {
+            supplier.innerHTML += `<option class="options" value="${sup}">${sup}</option>`
+        })
+    })
+
+
+    responaddProduct.addEventListener("click", () => {
         form.style.display = ""
         showProducts.style.display = "none"
         category.innerHTML = `<option class="options" value="">select Category</option>`
@@ -285,6 +339,17 @@ export function initProductPage() {
     amount.style.display = "none"
 
     stock_adjsment.addEventListener("click", () => {
+        adjsmentForm.style.display = ""
+        showProducts.style.display = "none"
+        Adjasment_Name.innerHTML = `<option class="options" value="">select Product</option>`
+        let unique_adjustment_product = [...new Set(product_data.map(item => item.sku))]
+
+        unique_adjustment_product.forEach((pro) => {
+            Adjasment_Name.innerHTML += `<option class="options" value="${pro}">${pro}</option>`
+        })
+    })
+
+    responadjsment.addEventListener("click", () => {
         adjsmentForm.style.display = ""
         showProducts.style.display = "none"
         Adjasment_Name.innerHTML = `<option class="options" value="">select Product</option>`

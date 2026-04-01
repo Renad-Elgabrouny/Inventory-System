@@ -62,11 +62,11 @@ $(document).on("click", ".supplier", function () {
                 const phone = document.createElement("td");
                 phone.style.cssText = `color: rgba(100, 116, 139, 1);`;
                 const email = document.createElement("td");
-                email.style.cssText = `color:rgb(37, 99, 235);`;
+                email.style.cssText = `color:#9333ea;`;
                 email.classList.add("d-none");
                 email.classList.add("d-md-table-cell");
                 const continent = document.createElement("td");
-                continent.style.cssText = `color: rgb(37, 99, 235)`;
+                continent.style.cssText = `color: #9333ea`;
                 continent.classList.add("d-none");
                 continent.classList.add("d-lg-table-cell");
                 const country = document.createElement("td");
@@ -284,6 +284,8 @@ $(document).on("click", ".supplier", function () {
             const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
             modal.show();
         }
+
+    
         document.getElementById("confirmDelete").addEventListener("click", function () {
             deleteSupplier(supplierToDelete)
             renderSuppliers();

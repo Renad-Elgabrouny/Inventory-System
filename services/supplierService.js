@@ -1,26 +1,23 @@
-
-
-
-window.addEventListener("load",function(e){
+window.addEventListener("load", function (e) {
     table = document.querySelector(".suppdata");
     const body = document.createElement("tbody");
     const searcharr = [];
-    let emailvar=0;
+    let emailvar = 0;
 
     $(".addSupplier").hide();
 
-    function showData(data){
-        for(let i=0;i<data.length;i++){
+    function showData(data) {
+        for (let i = 0; i < data.length; i++) {
             let item = data[i];
             const tr = document.createElement("tr");
             const ssn = document.createElement("td");
             ssn.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const name = document.createElement("td");
-            name.style.cssText=`font-size:18px`;
+            name.style.cssText = `font-size:18px`;
             const phone = document.createElement("td");
             phone.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const email = document.createElement("td");
-            email.style.cssText = `color:rgb(37, 99, 235)`;
+            email.style.cssText = `color:#9333ea`;
             const continent = document.createElement("td");
             continent.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const country = document.createElement("td");
@@ -31,7 +28,7 @@ window.addEventListener("load",function(e){
             street.style.cssText = `color: rgba(100, 116, 139, 1);`;
             const updatetd = document.createElement("td");
             const update = document.createElement("button");
-            update.style.cssText = `background-color:rgb(37, 99, 235);padding:2px;color:white;border:none;border-radius:5px`;
+            update.style.cssText = `background-color: #9333ea;padding:2px;color:white;border:none;border-radius:5px`;
             update.id = "updateBtn";
             update.classList.add(item.id);
             update.value = "Update";
@@ -39,7 +36,7 @@ window.addEventListener("load",function(e){
             updatetd.appendChild(update);
             const deletetd = document.createElement("td");
             const deletee = document.createElement("button");
-            deletee.style.cssText = `background-color:red;padding:2px;color:white;border:none;border-radius:5px`;
+            deletee.style.cssText = `background-color:#9333ea;padding:2px;color:white;border:none;border-radius:5px`;
             deletee.id = "deleteBtn";
             deletee.classList.add(item.id);
             deletee.value = "Delete";
@@ -71,10 +68,10 @@ window.addEventListener("load",function(e){
         }
     }
 
-    let updatedSupplier=0;
+    let updatedSupplier = 0;
     async function getSupplier(id) {
         try {
-            const response = await fetch("http://localhost:3000/suppliers/"+id);
+            const response = await fetch("http://localhost:3000/suppliers/" + id);
             if (!response.ok) {
                 throw new Error("Failed to fetch suppliers");
             }
@@ -87,9 +84,9 @@ window.addEventListener("load",function(e){
             country.value = data.address.country;
             city.value = data.address.city;
             street.value = data.address.street;
-            } catch (error) {
-                console.error("Error:", error.message);
-            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
     }
     async function getSuppliers() {
         try {
@@ -100,9 +97,9 @@ window.addEventListener("load",function(e){
             const data = await response.json();
             showData(data);
             searcharr.push(...data);
-            } catch (error) {
-                console.error("Error:", error.message);
-            }
+        } catch (error) {
+            console.error("Error:", error.message);
+        }
     }
     getSuppliers();
 
@@ -128,7 +125,21 @@ window.addEventListener("load",function(e){
                 throw new Error("Failed to add supplier");
             }
             const data = await response.json();
-            console.log("Added supplier:", data);
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "action": "supplier added",
+                    "entity": "supplier",
+                    "userId": data._id,
+                    "date": new Date().toLocaleDateString()
+                })
+            });
+            const activity = await activityLog.json();
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
+            console.log("Activity created:", activity);
         } catch (error) {
             console.error("Error:", error.message);
         }
@@ -142,13 +153,31 @@ window.addEventListener("load",function(e){
             if (!response.ok) {
                 throw new Error("Failed to delete supplier");
             }
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    "action": "supplier deleted",
+                    "entity": "supplier",
+                    "userId": id,
+                    "date": new Date().toLocaleDateString()
+                })
+            });
+            const activity = await activityLog.json();
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
+            console.log(activity);
+            setTimeout(() => {
+
+            }, 10000);
             let data = null;
-                try {
-                    data = await response.json();
-                } catch {
-                    data = { message: "Deleted successfully (no response body)" };
-                }
-            console.log("RES", data);
+            try {
+                data = await response.json();
+            } catch {
+                data = { message: "Deleted successfully (no response body)" };
+            }
+            // console.log("RES",activity);
         } catch (error) {
             console.error("Error deleting supplier:", error.message);
         }
@@ -176,7 +205,22 @@ window.addEventListener("load",function(e){
                 throw new Error("Failed to update supplier");
             }
             const data = await response.json();
-            return data;
+            const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    action: "supplier updated",
+                    entity: "supplier",
+                    userId: id,
+                    date: new Date().toLocaleDateString()
+                })
+            });
+            if (!activityLog.ok) {
+                throw new Error("Failed to log activity");
+            }
+            const activity = await activityLog.json();
+            console.log(activity);
+            return { data, activity };
         } catch (error) {
             console.error("Error updating supplier:", error.message);
             return null;
@@ -192,12 +236,12 @@ window.addEventListener("load",function(e){
     const city = document.querySelector("#city");
     const street = document.querySelector("#street");
 
-    $("#addbutt").click(function(){
+    $("#addbutt").click(function () {
         $(".addSupplier").show();
         $(".container").hide();
         $(".modify").hide();
     })
-    
+
 
     $(".submit").click(function (e) {
         if (!ssc.value || !name.value || !phone.value || !email.value ||
@@ -236,7 +280,7 @@ window.addEventListener("load",function(e){
 
         addSupplier()
     });
-    
+
     let supplierToDelete = null;
     function openDeleteModal(id) {
         supplierToDelete = id;
@@ -247,27 +291,27 @@ window.addEventListener("load",function(e){
         deleteSupplier(supplierToDelete)
         renderSuppliers();
     });
-    $(document).on("click", "#deleteBtn", function(){
+    $(document).on("click", "#deleteBtn", function () {
         console.log($(this).attr("class"));
         const id = $(this).attr("class");
         openDeleteModal(id);
     });
 
-    $(document).on("click", "#updateBtn", function(){
+    $(document).on("click", "#updateBtn", function () {
         $(".submit").hide();
         console.log($(this).attr("class"));
         const id = $(this).attr("class");
         $(".addSupplier").show();
         $(".container").hide();
         getSupplier(id)
-        $(".modify").click(function(e){
+        $(".modify").click(function (e) {
             e.preventDefault();
             updateSupplier(id)
         })
     });
 
     const supplier = document.querySelector("#supplier");
-    supplier.addEventListener("input",function(e){
+    supplier.addEventListener("input", function (e) {
         console.log(e.target.value);
         const result = searcharr.filter(sup => sup.name.includes(e.target.value));
         body.innerHTML = "";

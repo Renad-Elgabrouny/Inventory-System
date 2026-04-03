@@ -387,6 +387,13 @@
       "entity": "products",
       "userId": "e7ea",
       "date": "2026-04-01"
+    },
+    {
+      "id": "75df",
+      "action": "User Updated",
+      "entity": "users",
+      "userId": "e7ea",
+      "date": "2026-04-02"
     }
   ],
   "users": [
@@ -398,11 +405,11 @@
       "role": "user"
     },
     {
-      "id": "10",
       "name": "Fatma Hassan",
       "email": "fatma@inventory.com",
       "password": "Fatma@2026",
-      "role": "admin"
+      "role": "user",
+      "id": "10"
     },
     {
       "id": "3",
@@ -479,6 +486,13 @@
       "name": "mahmoud",
       "email": "mahmoud10@gmail.com",
       "password": "123456789Ky",
+      "role": "user"
+    },
+    {
+      "id": "241b",
+      "name": "nada",
+      "email": "nada@gmail.com",
+      "password": "N1234567",
       "role": "user"
     }
   ],

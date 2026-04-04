@@ -1,4 +1,4 @@
-window.addEventListener("load", function (e) {
+window.addEventListener("load",function(e){
     table = document.querySelector(".suppdata");
     const body = document.createElement("tbody");
     const searcharr = [];
@@ -129,10 +129,10 @@ window.addEventListener("load", function (e) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    "action": "supplier added",
-                    "entity": "supplier",
-                    "userId": data._id,
-                    "date": new Date().toLocaleDateString()
+                    "action":"supplier added",
+                    "entity":"supplier",
+                    "userId":data._id,
+                    "date":new Date().toLocaleDateString()
                 })
             });
             const activity = await activityLog.json();
@@ -157,10 +157,10 @@ window.addEventListener("load", function (e) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    "action": "supplier deleted",
-                    "entity": "supplier",
-                    "userId": id,
-                    "date": new Date().toLocaleDateString()
+                    "action":"supplier deleted",
+                    "entity":"supplier",
+                    "userId":id,
+                    "date":new Date().toLocaleDateString()
                 })
             });
             const activity = await activityLog.json();
@@ -169,14 +169,14 @@ window.addEventListener("load", function (e) {
             }
             console.log(activity);
             setTimeout(() => {
-
+                
             }, 10000);
             let data = null;
-            try {
-                data = await response.json();
-            } catch {
-                data = { message: "Deleted successfully (no response body)" };
-            }
+                try {
+                    data = await response.json();
+                } catch {
+                    data = { message: "Deleted successfully (no response body)" };
+                }
             // console.log("RES",activity);
         } catch (error) {
             console.error("Error deleting supplier:", error.message);
@@ -209,10 +209,10 @@ window.addEventListener("load", function (e) {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    action: "supplier updated",
-                    entity: "supplier",
-                    userId: id,
-                    date: new Date().toLocaleDateString()
+                    action:"supplier updated",
+                    entity:"supplier",
+                    userId:id,
+                    date:new Date().toLocaleDateString()
                 })
             });
             if (!activityLog.ok) {
@@ -220,7 +220,7 @@ window.addEventListener("load", function (e) {
             }
             const activity = await activityLog.json();
             console.log(activity);
-            return { data, activity };
+            return {data,activity};
         } catch (error) {
             console.error("Error updating supplier:", error.message);
             return null;

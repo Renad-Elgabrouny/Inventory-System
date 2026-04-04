@@ -165,6 +165,21 @@ $(document).on("click", ".supplier", function () {
                 }
                 const data = await response.json();
                 console.log("Added supplier:", data);
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "action":"supplier added",
+                        "entity":"supplier",
+                        "userId":data.id,
+                        "date":new Date().toLocaleDateString()
+                    })
+                });
+                const activity = await activityLog.json();
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                console.log("Activity created:", activity);
             } catch (error) {
                 console.error("Error:", error.message);
             }
@@ -179,6 +194,21 @@ $(document).on("click", ".supplier", function () {
                     throw new Error("Failed to delete supplier");
                 }
                 let data = null;
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "action":"supplier deleted",
+                        "entity":"supplier",
+                        "userId":id,
+                        "date":new Date().toLocaleDateString()
+                    })
+                });
+                const activity = await activityLog.json();
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                console.log(activity);
                 try {
                     data = await response.json();
                 } catch {
@@ -212,7 +242,21 @@ $(document).on("click", ".supplier", function () {
                     throw new Error("Failed to update supplier");
                 }
                 const data = await response.json();
-                return data;
+                const activityLog = await fetch("http://localhost:3000/activityLogs", {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        action:"supplier updated",
+                        entity:"supplier",
+                        userId:id,
+                        date:new Date().toLocaleDateString()
+                    })
+                });
+                if (!activityLog.ok) {
+                    throw new Error("Failed to log activity");
+                }
+                const activity = await activityLog.json();
+                console.log(activity);
             } catch (error) {
                 console.error("Error updating supplier:", error.message);
                 return null;
@@ -284,11 +328,12 @@ $(document).on("click", ".supplier", function () {
             const modal = new bootstrap.Modal(document.getElementById('deleteModal'));
             modal.show();
         }
+        document.getElementById("confirmDelete").addEventListener("click", async function (e) {
+            e.preventDefault();
 
-    
-        document.getElementById("confirmDelete").addEventListener("click", function () {
-            deleteSupplier(supplierToDelete)
-            renderSuppliers();
+            await deleteSupplier(supplierToDelete);
+
+            await renderSuppliers();
         });
         $(document).on("click", ".delete-supplier", function () {
             const id = $(this).attr("supplierId");
@@ -322,52 +367,20 @@ $(document).on("click", ".supplier", function () {
 
 const productItem = document.querySelector(".products");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const menu = document.querySelector(".menu");
-    if (!menu) {
-        console.error(".menu element not found!");
-        return;
-    }
-
-    menu.addEventListener("click", async function (e) {
-        const productItem = e.target.closest(".product-item");
-        if (!productItem) return;
-        document.querySelectorAll(".menu > div").forEach(item => {
-            item.classList.remove("active-item");
-        });
-        productItem.classList.add("active-item");
-        try {
-            const res = await fetch("./pages/products.html");
-            const html = await res.text();
-            const contentArea = document.querySelector(".contentArea");
-            if (!contentArea) throw new Error(".contentArea not found");
-            contentArea.innerHTML = html;
-            initProductPage();
-        } catch (error) {
-            console.error("Error loading product page:", error);
-        }
+productItem.addEventListener("click", async function () {
+    document.querySelectorAll(".menu > div").forEach(item => {
+        item.classList.remove("active-item");
     });
+
+    productItem.classList.add("active-item");
+
+    try {
+        const res = await fetch("./pages/products.html");
+        const html = await res.text();
+        document.querySelector(".contentArea").innerHTML = html;
+        // const module = await import("../../services/productService.js");
+        initProductPage();
+    } catch (error) {
+        console.error("Error loading product page:", error);
+    }
 });
-// const report = document.querySelector(".report");
-
-// report.addEventListener("click", async function () {
-//     document.querySelectorAll(".menu > div").forEach(item => {
-//         item.classList.remove("active-item");
-//     });
-
-//     report.classList.add("active-item");
-
-//     try {
-//         const res = await fetch("./pages/reports.html");
-//         const html = await res.text();
-//         document.querySelector(".contentArea").innerHTML = html;
-//         // const module = await import("../../services/reportService.js");
-//         // initProductPage();
-//         const script = document.createElement("script");
-//         script.src = "../services/reportService.js";
-//         // script.type = "module"; // optional
-//         document.body.appendChild(script);
-//     } catch (error) {
-//         console.error("Error loading product page:", error);
-//     }
-// });

@@ -326,74 +326,31 @@
       "date": "2026-03-29"
     },
     {
-      "id": "fd10",
-      "action": "Product added from dashboard",
-      "entity": "test",
-      "userId": "e7ea",
-      "date": "2026-03-31"
+      "id": "f3d2",
+      "action": "supplier updated",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
     },
     {
-      "id": "c1d8",
-      "action": "Product Deleted",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-03-31"
+      "id": "6e3c",
+      "action": "supplier updated",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
     },
     {
-      "id": "b90b",
-      "action": "Product delete",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-03-31"
+      "id": "eeef",
+      "action": "supplier deleted",
+      "entity": "supplier",
+      "userId": "8e43",
+      "date": "3/31/2026"
     },
     {
-      "id": "70b5",
-      "action": "Category added from dashboard",
-      "entity": "test",
-      "userId": "e7ea",
-      "date": "2026-03-31"
-    },
-    {
-      "id": "5d95",
-      "action": "Category deleted from dashboard",
-      "entity": "test",
-      "userId": "e7ea",
-      "date": "2026-03-31"
-    },
-    {
-      "id": "1fd3",
-      "action": "Product Deleted",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-04-01"
-    },
-    {
-      "id": "ae44",
-      "action": "Product delete",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-04-01"
-    },
-    {
-      "id": "566c",
-      "action": "Product Deleted",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-04-01"
-    },
-    {
-      "id": "0194",
-      "action": "Product delete",
-      "entity": "products",
-      "userId": "e7ea",
-      "date": "2026-04-01"
-    },
-    {
-      "id": "75df",
-      "action": "User Updated",
-      "entity": "users",
-      "userId": "e7ea",
-      "date": "2026-04-02"
+      "id": "6279",
+      "action": "supplier added",
+      "entity": "supplier",
+      "date": "3/31/2026"
     }
   ],
   "users": [
@@ -811,16 +768,16 @@
       }
     },
     {
-      "id": "8e43",
-      "ssc": "AU-001-2024",
-      "name": "Pacific Rim Exports",
-      "phone": "01632109876",
-      "email": "exports@pacificrim.com",
+      "id": "b8e9",
+      "ssc": "3030303033",
+      "name": "MOHAMED ATIA",
+      "phone": "01062765839",
+      "email": "muhamedatia22@gmail.com",
       "address": {
-        "continent": "Australia",
-        "country": "Australia",
-        "city": "Sydney",
-        "street": "George St."
+        "continent": "Africa",
+        "country": "Egypt",
+        "city": "samanoud",
+        "street": "One"
       }
     }
   ],

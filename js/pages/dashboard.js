@@ -44,7 +44,14 @@ function checkRole() {
 }
 
 function renderUserProfile() {
-  profile.innerText = AuthService.getCurrentUser().name;
+  const usr = AuthService.getCurrentUser();
+  document.querySelectorAll(".user-profile").forEach(el => {
+    el.innerText = usr.name;
+  });
+  document.querySelectorAll(".user-role").forEach(el => {
+    el.innerText = usr.role;
+  });
+ 
 }
 
 
